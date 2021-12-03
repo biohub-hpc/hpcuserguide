@@ -1,0 +1,4 @@
+.diagramscache
+hpc-user-guide.mkdocs
+hpc-user-guide.mkdocs.src
+*.log

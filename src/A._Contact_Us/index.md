@@ -1,0 +1,38 @@
+# Contact Us
+
+## How?
+
+### [`#hpc-community` Slack channel](https://czbiohub.slack.com/archives/C02CF73PLC8) 
+
+The primary and recommended method to request help with the CZBiohub HPC
+environment is the [`#hpc-community` Slack
+channel](https://czbiohub.slack.com/archives/C02CF73PLC8). `#hpc-community` is
+where news about the environment will be posted, and it is hoped that this
+forum will become a hub where people using the HPC enviornment can exchange
+ideas and suggestions, request enhancements, discuss changes and share
+computational success stories.
+
+### HPC Sysadmin `@griznog`
+
+You can reach out to the sysadmin by:
+
+ * Slack direct message to `@griznog` 
+ * email to [john.hanks@czbiohub.org](mailto:john.hanks@czbiohub.org). 
+
+## When?
+
+If any of the following apply:
+
+ * Something doesn't work or seems broken. 
+ * Something seems difficult or impossible to accomplish. 
+ * Something seems abnormally slow or abnormally fast.
+ * You have an idea to improve the environment.
+ * You need a software package added to the environment.
+ * You just want to talk about computational science or computing in general.
+
+The HPC Environment exists to serve the needs of the CZBioHub community. We
+can't do that unless you tell us what those needs are and keep us up to date on
+how things are working for you. This is a collaborative service in which you,
+via requests and feedback, are very much the driver of the design and
+operation. Please contact us early and often.
+
