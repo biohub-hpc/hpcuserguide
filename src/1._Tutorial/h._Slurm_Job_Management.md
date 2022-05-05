@@ -1,8 +1,12 @@
 # Job Management
 
+## OnDemand
+
+[OnDemand](https://ondemand.czbiohub.org) includes a jobs app which can be used to manage and submit jobs.
+
 ## A Graphical View
 
-SLURM includes a graphical tool which can be used to check the state of many things associated with the scheduler. To use it you will need to have support for forwarding X applications. Each operating system has a different set of requirements:
+SLURM includes a graphical tool which can be used to check the state of many things associated with the scheduler. To use it you will need to be on a NoMachine or OnDemand compute node desktop session or have support for forwarding X applications to your local client. If forwarding to a local client, each operating system has a different set of requirements:
 
 - Linux: Just add -Y to your ssh command when connecting to the login nodes.
 - Mac OS X: Since Mavericks you need to install
@@ -21,25 +25,6 @@ The sview window should appear, with the job tab open by default as shown here.
 ```bash
 # TODO: Add screenshot of sview once we have something interesting to see.
 ```
-
-## Text UI
-
-A text based graphical interface is available for slow connections or when
-unable to handle X forwarding of GUI applications. The command is
-
-```bash
-smap
-```
-
-and the resulting window appears as shown here:
-```bash
-# TODO: Add screenshot of smap once we have something interesting to see.
-```
-
-`smap` can also simply dump it's output to the screen without using curses to
-create an interactive user interface. To accomplish this add the option
-`--commandline`. For more details on smap see the
-[`smap` man page](https://slurm.schedmd.com/smap.html).
 
 ## Command Line 
 

@@ -12,7 +12,7 @@ while taking advantage of every opportunity to improve overall utilization of
 the available computational resources.
 
 The CLUSTER utilizes Slurm as the job scheduler. From the
-[SchedMD Slurm](http://slurm.schedmd.com/overview.html):
+[SchedMD Slurm](http://slurm.schedmd.com/overview.html) Slurm overview:
 
 > The Simple Linux Utility for Resource Management (SLURM) is an open source,
 > fault-tolerant, and highly scalable cluster management and job scheduling
@@ -29,10 +29,10 @@ Currently CLUSTER resources are managed by a Slurm instance with five main parti
 
 | Partition | Description |
 | --------------- | ------------------------------------------------------- |
-| `interactive` | Provides quick access to a smaller amount of cores/memory. |
+| `interactive` | (FUTURE) Provides quick access to a smaller amount of cores/memory. |
 | `cpu` (default) | Nodes that provide CPU-only processing. |
 | `gpu` | Nodes which contain GPU co-processers. |
-| `crustations` | Unassigned crustation remote desktop nodes. |
+| `crustations` | (FUTURE) Unassigned crustation remote desktop nodes. |
 | `preempted` | Scavenger partition. |
 
 Resources are selected by using a combination of partition, node, core, memory,
@@ -68,7 +68,9 @@ Ultimately the goal of a fairshare scheduler is two-fold:
  1. Fairly distribute the available resources over time.
  1. Ensure that all users are equally (un)happy.
 
-If you find yourself more (un)happy than other users, please [Contact Us](/#A._Contact_Us) and let us know so we can work with you to bring your (un)happiness back in line with the average level.
+If you find yourself more (un)happy than other users, please [Contact
+Us](/#A._Contact_Us) and let us know so we can work with you to bring your
+(un)happiness back in line with the average level.
 
 # Quality of Service 
 

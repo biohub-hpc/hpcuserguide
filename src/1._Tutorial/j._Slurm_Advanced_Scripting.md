@@ -61,7 +61,7 @@ example shows how a trap can be used to clean up temp files on job exit. As a
 bonus, it demonstrates the use of mktemp to create unique temporary files.
 
 
-```
+```bash
 #!/bin/bash
 #SBATCH --time=2:00:00
 #SBATCH --job-name=TRAPS
@@ -87,7 +87,7 @@ sleep 300
 
 And when executed:
 
-```
+```bash
 # Submit our trap enabled job.
 [user@host ~]$ sbatch traps.sh
 Submitted batch job 7243
@@ -100,18 +100,18 @@ Submitted batch job 7243
               7243     batch    TRAPS username  R       0:03      1 nodename
 ```
 
-```
+```bash
 # ssh to node, see temp file.
 [user@host ~]$ ssh nodename ls /tmp/username*
 /tmp/username.nXg
 ```
 
-```
+```bash
 # Wait for job to complete, check again. No temp file.
 [user@host ~]$ ssh nodename ls /tmp/username*
 ```
 
-```
+```bash
 # See what our output looks like.
 [user@host ~]$ cat slurm-7243.out
 I am PID: 50662

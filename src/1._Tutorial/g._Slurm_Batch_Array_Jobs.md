@@ -125,7 +125,7 @@ complicated as a list of full command lines to execute in individual jobs.
 
 An example list:
 
-```
+```text
 This is line 1.
 And now we have line 2.
 After 1 and 2 comes line 3.
@@ -159,10 +159,13 @@ value=$(sed -n "${SLURM_ARRAY_TASK_ID}p" array_lines.txt)
 
 echo "command ${value}"
 ```
-## Other array indexing options
 
-|`--array=0-100:4` | Changes step to 4 from default of 1, results in array task IDs of 0,4,8,12,16,...100 |
-| `--array=2,34,5,6,89,1,23` | Runs specific tasks from the list of array indices |
+## Array indexing examples
+
+| Option | Result |
+| -------------------------- | -------------------------------------------- |
+| `--array=0-100:4` | Changes step to 4 from default of 1, results in<br>array task IDs of 0,4,8,12,16,...100 |
+| `--array=2,34,5,89,1,23` | Runs specific tasks from the list of array indices |
 
 
 ## Job Array Throttling
@@ -172,7 +175,9 @@ job array that can run concurrently.  This is known as **job array throttling**
 and may be accomplished with the `%` modifier, as shown in the following
 example:
 
-| ```--array=0-50%5``` | Results in 51 tasks numbered 0-50 but limits them to no more than 5 running tasks at any one time. |
+| Option | Result |
+| ------------------- | ------------------------------------------------------- |
+| `--array=0-50%5` | Results in 51 tasks numbered 0-50 but limits<br>them to no more than 5 running tasks at any one time. |
 
 This may be done on the fly even after the job array has been submitted and
 some task elements are running.  Reducing the number of concurrent tasks will
@@ -182,7 +187,7 @@ apply/change a throttle on a job array that is has been submitted, one may use
 `scontrol` as follows, modify MYJOBID with the job array's base jobid (the
 numbers before the underscore in the `squeue` output):
 
-```
+```bash
 scontrol update jobid=MYJOBID arraytaskthrottle=MYLIMIT
 ```
 

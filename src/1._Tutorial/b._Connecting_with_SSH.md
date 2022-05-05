@@ -28,12 +28,12 @@ the system.
 
 ## Making the connection
 
-Once a terminal application is opened, tehn connecting is as simple as `ssh FIRST.LAST@cluster.czbiohub.org`, for example:
+Once a terminal application is opened, then connecting is as simple as `ssh FIRST.LAST@login01.czbiohub.org`, for example:
 
 ```
-(base) [griznog@lepomis ~]$ ssh john.hanks@cluster.czbiohub.org
+(base) [griznog@lepomis ~]$ ssh john.hanks@login01.czbiohub.org
 Last login: Thu Oct 14 15:20:09 2021 from 10.79.124.15
-[john.hanks@cluster ~]$ 
+[john.hanks@login01 ~]$ 
 ```
 
 Note, the cluster is only visible on the BioHub network, via the ssh.czbiohub.org jumphost or over a VPN connection.
