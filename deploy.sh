@@ -9,5 +9,5 @@ function die () {
 foliant make site || die "Failed running 'foliant make site'"
 
 # Push site to hpc.czbiohub.org
-rsync -rv --progress --delete hpc-user-guide.mkdocs/ hpc.czbiohub.org:/var/www/html/
+rsync -rv --progress --delete hpc-user-guide.mkdocs/ root@hpc.czbiohub.org:/var/www/html/
 
