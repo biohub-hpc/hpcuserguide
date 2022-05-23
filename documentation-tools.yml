@@ -29,6 +29,7 @@ dependencies:
     - click==8.0.1
     - contextlib2==21.6.0
     - foliant==1.0.12
+    - foliantcontrib.admonitions==1.0.1
     - foliantcontrib-blockdiag==1.0.5
     - foliantcontrib-escapecode==1.0.4
     - foliantcontrib-flatten==1.0.7
