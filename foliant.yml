@@ -2,7 +2,10 @@ title: CZBioHub HPC User Guide
 
 chapters:
 
+
 preprocessors:
+  - escapecode
+
   - blockdiag:
       params:
         antialias: true
@@ -17,6 +20,7 @@ preprocessors:
 
 
   - admonitions
+  - unescapecode
 
 backend_config:
   mkdocs:
@@ -35,6 +39,9 @@ backend_config:
       theme: "windmill"
 
   pandoc:
+    params:
+            pdf_engine: xelatex
+            listings: true
     slug: hpc-user-guide-pdf
 
 
