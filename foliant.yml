@@ -5,7 +5,7 @@ chapters:
 
 preprocessors:
   - escapecode
-
+  - multilinetables
   - blockdiag:
       params:
         antialias: true
