@@ -5,10 +5,37 @@
     This is a draft of the storage descriotion, layout and recommended usage.
     Comments/suggestions/critiques to us in Slack #hpc-community.
 
-| Unix Path | Disk Redundancy | Backup Regimen | Typical Use Cases |
-|:---------:|:---------------:|:--------------:|:-----------------:|
-| `/local/scratch`<br>`/hpc/nodes/${NODENAME}` | None, Minimal | None<br>Subject to deletion | Intermediate files<br>temporary job data<br>reference/training/input data copies |
-| `/hpc/projects` | High<br>performance tuned | On Site Replica<br>Optional Off-site Replica(s) | Working data<br>raw instrument data<br>scripts<br>documents<br>computational results<br>non-temporary data files |
-| `/hpc/archives` | High<br>space optimized | On Site Replica<br> Optional Off-site Replica(s)<br>AWS Deep Archive | Publication associated data<br>data with long retention requirements<br> Disaster recovery data |
 
++----------------------+---------------------------+---------------------------+
+| Unix Path            | Backups                   | Typical Use Cases         |
+|                      |                           |                           |
++======================+===========================+===========================+
+| `/local/scratch`<br> | None                      | - Temp/intermediate files |
+| `/hpc/nodes/${NODE}` |                           | - Copies of data          |
++----------------------+---------------------------+---------------------------+
+| `/hpc/scratch`       | None                      | - Temp/intermediate files |
+|                      |                           | - Copies of data          |
++----------------------+---------------------------+---------------------------+
+| `/hpc/projects`      | - On-site Replicas        | - Working data            |
+|                      | - Off-site Replicas[^1]   |                           |
+|                      | - Snapshots (history)[^2] |                           |
++----------------------+---------------------------+---------------------------+
+| `/hpc/archives`      | - On-site Replicas        | - Archival periods req.   |
+|                      | - Off Site Replicas[^1]   | - Disaster recovery req.  |
+|                      | - Cloud Archive           | - High cost data          |
+|                      | - Snapshots (history)[^2] |                           |
++----------------------+---------------------------+---------------------------+
+| `/hpc/mydata`        | - On-site Replicas        | - Personal Workspace      |
+|                      | - Snapshots (history)[^2] |                           |
++----------------------+---------------------------+---------------------------+
+| `/home`              | - On-site Replicas        | - Private data            |
+|                      | - Snapshots (history)[^2] |                           |
++----------------------+---------------------------+---------------------------+
 
+[^1]:
+    Off-site replicas available on a per-project basis, subject to contraints
+    on space and available inter-site bandwidth.
+[^2]:
+    Snapshot polices will vary based on space constraints and the underlying
+    storage snapshot features. Dynamic workflow patterns, with frequent
+    writes/re-writes/deletes, typically requires reducing snapshot lifespan.
