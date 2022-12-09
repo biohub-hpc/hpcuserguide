@@ -5,7 +5,6 @@ chapters:
 
 preprocessors:
   - escapecode
-  - multilinetables
   - blockdiag:
       params:
         antialias: true
@@ -31,6 +30,7 @@ backend_config:
     mkdocs.yml:
       markdown_extensions:
         - "admonition"
+        - "tables"
         - "markdown_grid_tables"
         - "footnotes"
       site_name: "CZBioHub HPC User Quide"

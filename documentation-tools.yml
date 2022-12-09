@@ -81,4 +81,4 @@ dependencies:
     - wcwidth==0.2.5
     - webcolors==1.11.1
     - zipp==3.5.1
-prefix: /home/griznog/Applications/anaconda3/envs/documentation-tools
+prefix: /hpc/apps/anaconda/2022.05/envs/documentation-tools
