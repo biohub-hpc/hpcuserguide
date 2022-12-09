@@ -38,7 +38,9 @@ backend_config:
       site_description: "CZBioHub HPC User Guide"
       site_author: "@griznog"
       dev_addr: "127.0.0.1:18080"
-      theme: "windmill"
+      theme: "readthedocs"
+      extra_css:
+        - 'css/extra.css'
 
   pandoc:
     params:
