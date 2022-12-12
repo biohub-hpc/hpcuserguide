@@ -2,7 +2,7 @@
 
 !!! warning "Draft Draft Draft"
 
-    This is a draft of the storage descrption, layout and recommended usage.
+    This is a draft of the storage description, layout and recommended usage.
     Comments/suggestions/critiques to us in Slack #hpc-community.
 
 # Storage Namespaces
@@ -13,11 +13,11 @@ The following table outlines the available storage namespaces in which storage i
 | Unix Path                  | Disk/Server<br> | Snapshots | On-Site<br> | Off-Site<br>  | AWS Glacier<br> | Best used for/data which is: |
 |                            | Redundancy      |           | Replica     | Replica       | Deep Archive    |                              |
 +============================+=================+===========+=============+===============+=================+==============================+
-| `$HOME`                    | High            | Yes       | Yes         | No            | No              |  - private data/applications |
+| `${HOME}`                  | High            | Yes       | Yes         | No            | No              |  - private data/applications |
 +----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
 | `/hpc/mydata/${USER}`      | High            | Yes       | Yes         | No            | No              |  - personal working space    |
 +----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/local/scratch`           | Low             | No        | No          | No            | No              |  - scratch data              |
+| `/local/scratch`<br>       | Low             | No        | No          | No            | No              |  - scratch data              |
 | `/hpc/nodes/${NODE}`       |                 |           |             |               |                 |  - easily reproducible data  |
 |                            |                 |           |             |               |                 |  - intermediate job files    |
 +----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
@@ -52,8 +52,9 @@ The following table outlines the available storage namespaces in which storage i
 |                            |                 |           |             |               |                 |    name for website          |
 +----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
 
+
 [^1]:
-    Off-site replicas available on a per-project basis, subject to contraints
+    Off-site replicas available on a per-project basis, subject to constraints
     on space and available inter-site bandwidth.
 [^2]:
     Snapshot polices will vary based on space constraints and the underlying
@@ -66,7 +67,7 @@ The following table outlines the available storage namespaces in which storage i
     hosts for writes.
 
 # Namespace Details
-## `$HOME`
+## `${HOME}`
 
 The user `${HOME}` directory, also known as `~` and on Scientific Computing
 systems, always located at `/home/${USER}`, is for private user data. The
@@ -85,29 +86,31 @@ without needed to request storage spaces. It's intended to provide a space to
 try things out and once a project has matured, to then request project, archive
 or other explicit space for the project.
 
-## `/local/scratch`, a.k.a. `/hpc/nodes/${NODE}`
-
-Each node has some amount of local working storage. This can always be accessed
-via `/tmp`, but `/local/scratch` is available for use where a project might
-want to stage data which remains on the node across multiple jobs. Please
-consult with us before using this space as local storage is not treated as a
-consumable by Slurm and filling a node's local disks can negatively impact
-other jobs. 
+## `/local/scratch`, `/hpc/nodes/${NODE}`
 
 !!! Warning
 
     This space is subject to being purged at each node reboot.
 
+Each node has some amount of local working storage. This can always be accessed
+via `/tmp` which is a per-user namespace only available on the node.
+`/local/scratch` is available for use where a project might want to stage data
+which remains on the node across multiple jobs. `/local/scratch` on each node
+is then NFS exported to all other nodes and can be found at
+`/hpc/nodes/${NODENAME}`. Please consult with us before using this space as
+local storage is not treated as a consumable by Slurm and filling a node's
+local disks can negatively impact other jobs.
+
 ## `/hpc/scratch/${NAME}`
+
+!!! warning
+
+    NEVER LEAVE THE ONLY COPY OF IMPORTANT DATA ON A SCRATCH SPACE.
 
 Shared scratch storage areas are available via this namespace. The locations
 will be tuned for maximum performance and the cost of reliability. Scratch
 spaces are subject to being lost as a result of very few disk failures or being
 purged and rebuilt on relatively short notice to address performance issues.
-
-!!! warning
-
-    NEVER LEAVE THE ONLY COPY OF IMPORTANT DATA ON A SCRATCH SPACE.
 
 ## `/hpc/projects/${NAME}`
 
@@ -172,4 +175,7 @@ The steps in our hypothetical data flow might be:
 4. QC output formatted and written to `/hpc/websites/${NAME}.czbiohub.org`
 5. Data to be retained long-term copied to `/hpc/archives/%{NAME}`
 
-This example uses shared and local scratch, instrument storage, projects storage, website storage and archive storage. As all these are also available via [Globus](https://globus.org), any of these spaces can be optionally  
+This example uses shared and local scratch, instrument storage, projects
+storage, website storage and archive storage. As all these are also available r
+can be) via [Globus](https://globus.org), any of these spaces can be optionally
+used for data delivery to or sharing with collaborators.
