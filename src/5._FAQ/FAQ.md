@@ -2,22 +2,23 @@
 
 ## How do I use NoMachine?
 
-The first step to using NoMachine is to get and install teh NoMachine
+### NoMachine Client
+The first step to using NoMachine is to get and install the NoMachine
 Enterprise Desktop Client, which can be downloaded at [NoMachine Enterprise
 Client](https://www.nomachine.com/product&p=NoMachine%20Enterprise%20Client).
-
-Once that is installed on your local laptop/desktop, you can use it to connect
-to **desktops.czbiohub.org** using the NX protocol and default port of 4000. 
 
 !!! warning "Network restrictions"
     The NoMachine servers are only visible from on-site, with a VPN connection
     or via some advanced SSH tunneling.
 
 The long term goal is to have our NoMachine nodes integrated into OnDemand, but
-at the current time that is a work in progress. Login nodes are open to any
-connection, but the `gpu-sm01-[01-20]` nodes will require that you have a
-running job on the node before you are allowed to log in to the node desktop.
-To claim the node as your own, submit a job like:
+at the current time that is a work in progress. 
+
+### Reserving a Node
+
+Login nodes are open to any connection, but the `gpu-sm[01-02]-[01-20]` nodes
+will require that you have a running job on the node before you are allowed to
+log in to the node desktop.  To claim the node as your own, submit a job like:
 
 ```
 [john.hanks@login01 ~]$ srun --exclusive --partition=gpu --gpus=a40:1 --time=8:00:00 --pty bash -l
@@ -42,6 +43,37 @@ And the assigned node is now yours for the duration of the job.
     Be sure to include the `--exclusive` flag, or other people will be able to
     run jobs on the node if any CPUs are available.
 
+### Connecting to the Node
+
+Begin by setting up an SSH tunnel to the node. Following the job submission
+examples above, our node is `gpu-sm01-10` so we need to tunnel to that node via
+a cluster login node, to the NX service on port 4000. In a terminal connect
+with
+
+```
+   # Off-site and not on VPN, jump through login-01 or login-02
+   $ ssh -J login-01 -L 24000:localhost:4000 YOUR.LOGIN@gpu-sm01-10
+
+   # On-site or on VPN, jump through login01 or login02
+   $ ssh -J login01 -L 24000:localhost:4000 YOUR.LOGIN@gpu-sm01-10
+```
+
+The `ssh` commands show here will prompt as needed to log you in and tunnel
+port 24000 on your local laptop/workstation to the compute node's port 4000
+where the NoMachine service is listening.
+
+Once the tunnel is connected, create a connection in the NoMachine client with the settings:
+
+* Host: localhost
+* Port: 24000
+* Protocol: NX
+
+Note: 24000 is an arbitrary value, to connect to multiple nodes just change
+that to any value between 4096 and 65535. If there is an error due to a
+collision just pick another port. 
+
+### Future
+
 Watch the #hpc-community Slack channel for updates as we make progress on
 putting a better interface around NoMachine desktop access.
 
@@ -51,7 +83,7 @@ When something that was working, stops working, here are some of the common thin
 
 * Has anything been added to your `${HOME}/.bashrc` or `${HOME}/.bash_profile`?
 * Have you,possibly inadvertently, installed something into `${HOME}/.local` which causes a conflict in binaries or libraries?
-* Are you hitting a quota or full disk isssue? 
+* Are you hitting a quota or full disk issue? 
 * Has your input data or parameters changed? Now using a larger data set, for instance.
 * Have you tested from an incognito browser window and/or flushed the browser cache?
 
