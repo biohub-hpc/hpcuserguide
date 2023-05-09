@@ -74,7 +74,7 @@ systems, always located at `/home/${USER}`, is for private user data. The
 system uses this location to store sensitive data, website caches/cookies,
 Kerberos ticket data, credentials, etc., and because of this should always have
 permissions of `0700` and ownership of `${USER}:${USER}.grp`. This location
-show NEVER be shared with another account or user on the system. If there is a
+should NEVER be shared with another account or user on the system. If there is a
 need for multiple people to share an account, please request a shared service
 account that is not a real person.
 
@@ -93,7 +93,7 @@ or other explicit space for the project.
     This space is subject to being purged at each node reboot.
 
 Each node has some amount of local working storage. This can always be accessed
-via `/tmp` which is a per-user namespace only available on the node.
+via `/tmp` which is a per-user namespace only available when on the node.
 `/local/scratch` is available for use where a project might want to stage data
 which remains on the node across multiple jobs. `/local/scratch` on each node
 is then NFS exported to all other nodes and can be found at
@@ -110,26 +110,41 @@ local disks can negatively impact other jobs.
 Shared scratch storage areas are available via this namespace. The locations
 will be tuned for maximum performance and the cost of reliability. Scratch
 spaces are subject to being lost as a result of very few disk failures or being
-purged and rebuilt on relatively short notice to address performance issues.
+purged and rebuilt on relatively short notice to address performance or space
+issues.
 
 ## `/hpc/projects/${NAME}`
 
-Projects spaces are intended to be good working spaces with high reliability. Snapshots, where possible, provide a history to help recover from mistaken deletes or changes, but as noted above the amount of retained history is subject to the usage pattern of the project. The level of replication/backup and long term archiving can be adjusted as needed for a given projects requirements.
+Project spaces are intended to be good working spaces with high reliability.
+Snapshots, where possible, provide a history to help recover from mistaken
+deletes or changes, but as noted above the amount of retained history is
+subject to the usage pattern of the project. The level of replication/backup
+and long term archiving can be adjusted as needed for a given projects
+requirements.
 
 ## `/hpc/archives/${NAME}`
 
-Archive spaces are intended to be write-once and then never or extremely rarely updated, until they reach a pre-determined end-of-life and are removed. The underlying on-prem/site storage will be optimized for reliability and read performance and this is a good location to park data which needs to be made available via the web or [Globus](https://globus.org) on a long term basis.
+Archive spaces are intended to be write-once and then never or extremely rarely
+updated, until they reach a pre-determined end-of-life and are removed. The
+underlying on-prem/site storage will be optimized for reliability and read
+performance and this is a good location to park data which needs to be made
+available via the web or [Globus](https://globus.org) on a long term basis.
 
 ## `/hpc/user_apps/${GROUP}`
 
-This location provides an optimized location for installing shared applications. It is organized by groups, with each PI/lab group having a location where they can install applications, with permissions to share those as widely as need. Optionally a `module` can be added so that applications here can be managed with `module load appname/version` after doing `module load GROUPNAME`.
+This location provides an optimized location for installing shared
+applications. It is organized by groups, with each PI/lab group having a
+location where they can install applications, with permissions to share those
+as widely as need. Optionally a `module` can be added so that applications here
+can be managed with `module load appname/version` after doing `module load
+${GROUP}`.
 
 ## `/hpc/reference/${NAME}`
 
 The reference location is provided as a place to store on-site copies of public
 or other reference data to avoid re-downloading the same datasets repeatedly.
 Many NCBI datasets fall into this category, where it makes sense to manage one
-copy everyone can access and use. Only thing easy to reproduce or re-download
+copy everyone can access and use. Only things easy to reproduce or re-download
 should be kept here. This space is optimized for reading to support being used
 in scale-out workflows that need to access reference data.
 
@@ -138,12 +153,12 @@ in scale-out workflows that need to access reference data.
 Storing data from instruments presents some special problems. It's common to
 have an instrument controlled by a Windows PC which cannot be updated due to
 vendor/support restrictions and is at increased risk for malware or ransomware.
-To limit the impact of an infected instrument PC, the goal is to have a
-separate service account for each instrument such that a given instrument can
-only reach/modify it's own data. Additionally, by having this space accept data
-but be treated as read-only to all other systems, it's possible to maintain a
-long snapshot history to enable recovering from a potential ransomware
-infection with minimal data loss. 
+To limit the impact of an infected instrument PC, each instrument can have a
+separate service account such that a given instrument can only reach/modify its
+own data. Additionally, by having this space accept data but be treated as
+read-only to all other systems, it's possible to maintain a long snapshot
+history to enable recovering from a potential ransomware infection with minimal
+data loss. 
 
 ## `/hpc/websites/${VHOST}`
 
@@ -159,7 +174,10 @@ request.
 
 ## Analysis Pipeline
 
-Suppose we have a pipeline, managed by a workflow tool like `nextflow`. The incoming raw data for this pipeline is generated from one or more lab instruments. The pipeline processing will produce 
+Suppose we have a pipeline, managed by a workflow tool like `nextflow`. The
+incoming raw data for this pipeline is generated from one or more lab
+instruments. The pipeline processing will produce
+
  * intermediate/scratch files
  * quality control results to be web-accessible
  * processed data made available for researcher secondary analysis via local filesystem and globus
@@ -167,15 +185,15 @@ Suppose we have a pipeline, managed by a workflow tool like `nextflow`. The inco
 The steps in our hypothetical data flow might be:
 
 1. Data moves from instrument(s) to `/hpc/instruments/${INSTRUMENT_NAME}(s)`. Can be push or pull.
-2. Pipeline copies data to `/hpc/scratch/${NAME}`
-3. HPC Cluster jobs perform analysis
-   a. reference data read from `/hpc/reference/${DBNAME}`
-   b. Running jobs use `/tmp` and/or `/local/scratch` and/or `/hpc/scratch/${NAME}` for intermediate and temporary files.
-   c. results written to `/hpc/projects/${NAME}`
+2. Pipeline copies data to `/hpc/scratch/${NAME}` as a working location.
+3. HPC Cluster jobs perform analysis:
+    *  Reference data read from `/hpc/reference/${DBNAME}`
+    *  Running jobs use `/tmp` and/or `/local/scratch` and/or `/hpc/scratch/${NAME}` for intermediate and temporary files.
+    *  Results written to `/hpc/projects/${NAME}`
 4. QC output formatted and written to `/hpc/websites/${NAME}.czbiohub.org`
 5. Data to be retained long-term copied to `/hpc/archives/%{NAME}`
 
 This example uses shared and local scratch, instrument storage, projects
-storage, website storage and archive storage. As all these are also available r
-can be) via [Globus](https://globus.org), any of these spaces can be optionally
-used for data delivery to or sharing with collaborators.
+storage, website storage and archive storage. As all these are also available
+(or can be) via [Globus](https://globus.org), any of these spaces can be
+optionally used for data delivery to or sharing with collaborators.
