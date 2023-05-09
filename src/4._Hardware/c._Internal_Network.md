@@ -4,38 +4,44 @@
 nwdiag {
   node_width = 72;
   login [label = "Login\nNodes"];
-  ondemand [label = "OnDemand\nServer"];
-  crustations [label = "Crustations"];
+  loginpriv [label = "Private\nLogin"];
+  ondemand [label = "OnDemand"];
+  globus [label = "Globus"];
   slurm [label = "Slurm\nController"];
+  samba [label = "Samba"];
   ess [label = "ESS GPFS\nStorage"];
   ddn [label = "DDN Lustre\nStorage"];
+  nas [label = "ZFS/NAS\nStorage"];
   cpu [label = "CPU\nNodes"];
   gpu [label = "GPU\nNodes"];
 
-  network BioHub {
-    login;
-    ondemand;
-    crustations;
+  group {
+    cpu;
+    gpu;
   }
 
   network HPCEthernet {
     login;
+    loginpriv;
     ondemand;
-    crustations;
+    globus;
+    samba;
     slurm;
-    group {
-      cpu;
-      gpu;
-    }
+    nas;
+    ess;
+    cpu;
+    gpu;
   }
 
   network Infiniband {
-    ess;
-    ddn;
     login;
-    slurm;
+    loginpriv;
     ondemand;
-    crustations;
+    globus;
+    samba;
+    slurm;
+    nas;
+    ddn;
     cpu;
     gpu;
   }
