@@ -1,32 +1,47 @@
 # Network View
 
+## Bruno Cluster Network
+
 <nwdiag>
 nwdiag {
-  node_width = 72;
-  login [label = "Login\nNodes"];
-  loginpriv [label = "Private\nLogin"];
+  node_width = 96;
+  internet [label = "Internet", shape = cloud];
+  firewall [label = "Firewall", shape = roundedbox, width = 72];
+  internet -- firewall;
+  login [label = "Login\nNodes", stacked];
   ondemand [label = "OnDemand"];
   globus [label = "Globus"];
-  slurm [label = "Slurm\nController"];
-  samba [label = "Samba"];
+  webgateway [label = "Web\nGateway", shape = circle, stacked];
+
   ess [label = "ESS GPFS\nStorage"];
   ddn [label = "DDN Lustre\nStorage"];
   nas [label = "ZFS/NAS\nStorage"];
-  cpu [label = "CPU\nNodes"];
-  gpu [label = "GPU\nNodes"];
+  cpu [label = "CPU\nNodes", stacked];
+  gpu [label = "GPU\nNodes", stacked];
 
   group {
+    label = "Compute Nodes";
     cpu;
     gpu;
   }
 
-  network HPCEthernet {
+  network BioHub {
+    label = "BioHub\nScience DMZ";
+    color = blue;
+    firewall;
     login;
-    loginpriv;
     ondemand;
     globus;
-    samba;
-    slurm;
+    webgateway;
+  }
+
+  network HPCEthernet {
+    label = "Ethernet\n400/200/100";
+    color = yellow;
+    login;
+    ondemand;
+    globus;
+    webgateway;
     nas;
     ess;
     cpu;
@@ -34,12 +49,12 @@ nwdiag {
   }
 
   network Infiniband {
+    label = "Infiniband\nHDR/EDR";
+    color = "green";
     login;
-    loginpriv;
     ondemand;
     globus;
-    samba;
-    slurm;
+    webgateway;
     nas;
     ddn;
     cpu;
