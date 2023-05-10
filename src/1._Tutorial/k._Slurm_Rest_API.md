@@ -13,7 +13,7 @@ from pprint import pprint as pprint
 # By default we return the API definition.
 
 def request(method = 'GET', url = '/openapi'):
-    command = 'echo "%s %s HTTP/1.1\r\n" | %s' % (method, url, czb.slurmrestd)
+    command = 'echo "%s %s HTTP/1.1\r\n" | %s' % (method, url, 'slurmrestd')
     os.environ['SLURMRESTD_SECURITY'] = 'disable_user_check'
     status, output = subprocess.getstatusoutput(command)
 
