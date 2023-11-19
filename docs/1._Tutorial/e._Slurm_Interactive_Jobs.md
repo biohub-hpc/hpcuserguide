@@ -4,7 +4,7 @@ Before diving into a job submission, let's stop for a moment to consider what
 happens when a job is submitted to Slurm. A simplifed diagram of the basic
 steps is:
 
-<actdiag>
+```kroki-actdiag
 actdiag {
   submit -> accept -> parseargs -> schedule -> assign -> run -> writeoutput -> exit -> writejobrecord -> reviewoutput
 
@@ -28,7 +28,7 @@ actdiag {
      exit [label = "Return script exit\ncode"];
   }
 }
-</actdiag>
+```
 
 # Interactive Jobs
 
