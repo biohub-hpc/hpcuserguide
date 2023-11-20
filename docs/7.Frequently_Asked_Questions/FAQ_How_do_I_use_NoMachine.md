@@ -1,3 +1,13 @@
+---
+title: FAQ
+description: 
+published: true
+date: 2023-11-19T17:11:00.816Z
+tags: 
+editor: markdown
+dateCreated: 2023-11-19T15:37:54.471Z
+---
+
 # Frequently Asked Questions
 
 ## How do I use NoMachine?
@@ -21,7 +31,7 @@ will require that you have a running job on the node before you are allowed to
 log in to the node desktop.  To claim the node as your own, submit a job like:
 
 ```
-[john.hanks@login01 ~]$ srun --exclusive --mem=0 --partition=interactive --gpus=a40:1 --time=8:00:00 --pty bash -l
+[john.hanks@login01 ~]$ srun --exclusive --partition=gpu --gpus=a40:1 --time=8:00:00 --pty bash -l
 [john.hanks@gpu-sm01-10 ~]$
 ```
 You can then attach to the assigned node. For longer sessions, using `sbatch`
@@ -30,7 +40,7 @@ job being lost if, for instance, the session with the `srun` were dropped or
 network connection to your laptop lost. That `sbatch` would look like:
 
 ```
-[john.hanks@gpu-sm01-10 ~]$ sbatch --job-name=NOMACHINE --partition=interactive --gpus=a40:1 --time=8:00:00 --exclusive  --mem=0 --wrap "sleep 8h"
+[john.hanks@gpu-sm01-10 ~]$ sbatch --job-name=NOMACHINE --partition=gpu --gpus=a40:1 --time=8:00:00 --exclusive  --wrap "sleep 8h"
 Submitted batch job 40547
 [john.hanks@gpu-sm01-10 ~]$ squeue -j 40547
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -39,10 +49,9 @@ Submitted batch job 40547
 
 And the assigned node is now yours for the duration of the job.
 
-!!! warning "Use `--exclusive` and `--mem=0`"
+!!! warning "Use `--exclusive`"
     Be sure to include the `--exclusive` flag, or other people will be able to
-    run jobs on the node if any CPUs are available. `--mem` will ensure your 
-    job gets all available memory.
+    run jobs on the node if any CPUs are available.
 
 ### Connecting to the Node
 
@@ -83,14 +92,10 @@ putting a better interface around NoMachine desktop access.
 When something that was working, stops working, here are some of the common things to look for:
 
 * Has anything been added to your `${HOME}/.bashrc` or `${HOME}/.bash_profile`?
-  `conda init` modifies `~/.bashrc` in a way that breaks many things.
-* Have you,possibly inadvertently, installed something into `${HOME}/.local`
-  which causes a conflict in binaries or libraries?
+* Have you,possibly inadvertently, installed something into `${HOME}/.local` which causes a conflict in binaries or libraries?
 * Are you hitting a quota or full disk issue? 
-* Has your input data or parameters changed? Now using a larger data set, for
-  instance.
-* Have you tested from an incognito browser window and/or flushed the browser
-  cache?
+* Has your input data or parameters changed? Now using a larger data set, for instance.
+* Have you tested from an incognito browser window and/or flushed the browser cache?
 
 If none of those things seem to be the issues, reach out to us for additional help troubleshooting.
 
