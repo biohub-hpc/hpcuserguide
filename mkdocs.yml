@@ -1,9 +1,10 @@
 markdown_extensions:
-  - "admonition"
-  - "tables"
-  - "markdown_grid_tables"
-  - "footnotes"
-
+  - admonition
+  - tables
+  - footnotes
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 plugins:
   - kroki:
       DownloadImages: true
@@ -18,7 +19,8 @@ site_url: "https://hpc.czbiohub.org/hpc-user-guide"
 site_description: "CZBioHub HPC User Guide"
 site_author: "@griznog"
 dev_addr: "127.0.0.1:18080"
-theme: "readthedocs"
+theme:
+  name: material
 extra_css:
   - 'css/extra.css'
 
