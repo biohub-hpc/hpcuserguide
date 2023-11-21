@@ -1,15 +1,19 @@
-# Introduction to the Environment
+# Introduction to the HPC Cluster Environment
 
 A High Performance Computing (HPC) cluster is, at its core, a mechanism for
 providing shared access to a collection of computing, storage and network
-resources. There are numerous ways to accomplish this, for instance, any time
-you use a cloud server or a service hosted in The Cloud(tm) you are using a
-shared resource with a scheduler that assigns customer tasks to a specific
-real resource. There are several differences,however, that are specific to
-HPC which, in effect, make it HPC (even if configured to run on top of a
-Cloud environment).
+resources. The term "High Throughput Computing" (HTC) is also often used to
+describe this type of cluster environment when the architecture is oriented
+toward less tightly coupled workloads.
 
-1. A tightly coupled system image, providing a consistent operating system
+There are numerous ways to accomplish sharing of resources, for instance, any
+time you use a cloud server or a service hosted in The Cloud(tm) you are using
+a shared resource with a scheduler that assigns customer tasks to a specific
+real resource. There are several differences,however, that are specific to
+HPC/HTC which, in effect, make it HPC/HTC (even if configured to run on top of
+a Cloud environment).
+
+1. A common Operating System image, providing a consistent kernel, driver and
    software environment on all resources.
 1. A high speed interconnect dedicated to internode trusted communication and
    for accessing storage.
@@ -30,7 +34,9 @@ computational resources requiring nothing more than a simple script or command
 passed to the scheduler to be executed on the next available resource.
 Additionally, it's possible to do simple and non-intensive work directly on the
 login nodes without the need for involving the scheduling layer until ready to
-scale a task up or out across the resources.
+scale a task up or out across the resources. At the other end of the spectrum
+it's possible to use workflow tools to architect complex pipelines and
+processes, all in the same shared, multi-user environment. .
 
 
 

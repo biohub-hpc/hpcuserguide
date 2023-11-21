@@ -2,18 +2,31 @@
 
 ## OnDemand
 
-[OnDemand](https://ondemand.czbiohub.org) includes a jobs app which can be used to manage and submit jobs.
+[OnDemand](https://ondemand.czbiohub.org) includes a jobs app which can be used
+to manage and submit jobs.
 
 ## A Graphical View
 
-SLURM includes a graphical tool which can be used to check the state of many things associated with the scheduler. To use it you will need to be on a NoMachine or OnDemand compute node desktop session or have support for forwarding X applications to your local client. If forwarding to a local client, each operating system has a different set of requirements:
+SLURM includes a graphical tool which can be used to check the state of many
+things associated with the scheduler. To use it you will need to be on a
+NoMachine or OnDemand compute node desktop session or have support for
+forwarding X applications to your local client. If forwarding to a local
+client, each operating system has a different set of requirements:
 
-- Linux: Just add -Y to your ssh command when connecting to the login nodes.
-- Mac OS X: Since Mavericks you need to install
-  [XQuartz](http://xquartz.macosforge.org/landing/). Once XQuartz is available,
-  adding -Y to your ssh command should enable forwarding.
-- Windows: There are many free and commercial options, one of which is
-  [MobaXterm](https://mobaxterm.mobatek.net/). 
+### Linux
+
+Just add -Y to your ssh command when connecting to the login nodes.
+
+### Mac OS X
+
+Since Mavericks you need to install
+[XQuartz](http://xquartz.macosforge.org/landing/). Once XQuartz is available,
+adding -Y to your ssh command should enable forwarding.
+
+### Windows
+
+There are many free and commercial options, one of which is
+[MobaXterm](https://mobaxterm.mobatek.net/). 
 
  With that support enabled, simply start the viewer with
 
@@ -27,6 +40,9 @@ The sview window should appear, with the job tab open by default as shown here.
 ```
 
 ## Command Line 
+
+Note: Most Slurm commands will accept `--json` or `--yaml` to produce JSON or
+YAML formatted output for use in scripts that can parse JSON or YAML data.
 
 ### `scontrol`
 

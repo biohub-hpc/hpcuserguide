@@ -82,7 +82,7 @@ creates and submits a job script for you:
 ```bash
 # Bash one-liner to run a command on all files in a directory.  Caveat: this is
 # generally not best practice and for large numbers of files (10's or 100's of 
-# thousands) can cause the schedulder or storage to slow or die. 
+# thousands) can cause the scheduler or storage to slow or die. 
 [user@login1:~]$ for file in *; do sbatch --wrap "grep -i accatgtggtac $file"; done
 Submitted batch job 87516
 Submitted batch job 87517
@@ -90,7 +90,7 @@ Submitted batch job 87518
 Submitted batch job 87519
 Submitted batch job 87520
 Submitted batch job 87521
-....
+...
 ```
 
 This would produce a `slurm-JOBID.out` file with your search results for each

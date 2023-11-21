@@ -4,10 +4,10 @@
 
 Linux processes can send signals to and receive signals from other processes.
 When using the `kill` command to end a running process, you are sending it
-a signal. By default `kill` sends the signal 15, also known as SIGTERM,
+a signal. By default `kill` sends the signal 15, also known as `SIGTERM`,
 which asks the process politely to stop running. `kill -9 PID` kills the
 process without allowing it to process any other signals, 9 is also known as
-SIGKILL. You can find more information about the available signals with `man
+`SIGKILL`. You can find more information about the available signals with `man
 7 signal`.
 
 All processes have the option of capturing these signals with a trap and
@@ -52,13 +52,15 @@ include but are not limited to:
 - [Your Idea Here]
 
 The most common way to use traps is to handle job cleanup. If the job is killed
-for exceeding time limits, exceeding memory, or for any other reason, SLURM
-will first send it SIGINT, then wait for a short time before sending SIGKILL to
-clean up any lingering processes. Between getting those signals, a trap can
-perform functions like copying partial results, deleting temp files, removing
-partial results to prepare for the job being requeued, etc. The following
-example shows how a trap can be used to clean up temp files on job exit. As a
-bonus, it demonstrates the use of mktemp to create unique temporary files.
+for exceeding time limits, exceeding memory, or for any other reason, Slurm
+will first send it `SIGINT`, then wait for a short time before sending
+`SIGKILL` to clean up any lingering processes. Between getting those signals, a
+trap can perform functions like copying partial results, deleting temp files,
+removing partial results to prepare for the job being requeued, etc. The
+following example shows how a trap can be used to clean up temp files on job
+exit, using the trap special keyword `EXIT` which causes the trap to run when
+the script exits. As a bonus, it demonstrates the use of `mktemp` to create
+unique temporary files.
 
 
 ```bash

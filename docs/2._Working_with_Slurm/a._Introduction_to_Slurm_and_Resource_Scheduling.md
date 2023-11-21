@@ -1,8 +1,8 @@
-# Slurm: What is a Job Scheduler?
+# What is a Job Scheduler?
 
-If you have ever worked on a busy, shared server without a job scheduler, you
-quickly learned how troublesome it is to coordinate work with others. A batch
-job scheduler is a tool which manages coordination of work and provides a
+If you have ever worked on a busy, shared group server without a job scheduler,
+you quickly learned how troublesome it is to coordinate work with others. A
+batch job scheduler is a tool which manages coordination of work and provides a
 simple but powerful interface to use in developing workflows, pipelines and
 just submitting ad-hoc computational jobs. Submitted jobs, which amount to a
 request for a set of resources along with a description of the work to be
@@ -11,7 +11,7 @@ policies to assign the work to the proper resources in the proper order. All
 while taking advantage of every opportunity to improve overall utilization of
 the available computational resources.
 
-The CLUSTER utilizes Slurm as the job scheduler. From the
+CZBiohub HPC computational resources use Slurm as the job scheduler. From the
 [SchedMD Slurm](http://slurm.schedmd.com/overview.html) Slurm overview:
 
 > The Simple Linux Utility for Resource Management (SLURM) is an open source,
@@ -25,24 +25,27 @@ The CLUSTER utilizes Slurm as the job scheduler. From the
 > job) on the set of allocated nodes. Finally, it arbitrates contention for
 > resources by managing a queue of pending work.
 
-Currently CLUSTER resources are managed by a Slurm instance with five main partitions:
+All site cluster resources are managed by a Slurm instance with four main open
+partitions:
 
 | Partition | Description |
 | --------------- | ------------------------------------------------------- |
-| `interactive` | (FUTURE) Provides quick access to a smaller amount of cores/memory. |
+| `interactive` | Provides quick access to workstation nodes. |
 | `cpu` (default) | Nodes that provide CPU-only processing. |
 | `gpu` | Nodes which contain GPU co-processers. |
-| `crustations` | (FUTURE) Unassigned crustation remote desktop nodes. |
-| `preempted` | Scavenger partition. |
+| `preempted` | Scavenger partition allows use of all resources |\
+|             | and is preempted by jobs from other partitions. |
+[ Standard partitions ]
 
-Resources are selected by using a combination of partition, node, core, memory,
-GRES and/or constraints (features). This configuration is a starting point,
-from which the configuration is expected to evolve to meet the needs of the
-community as they arise. Please [Contact Us](/#A._Contact_Us) if the scheduler
-config is not working for a given workflow or software as we are happy to make
-adjustments, create Quality of Service rules, reservations or help develop
-tools and workarounds.
+Additional partitions may be present on some resources where necessary to
+support specific workloads. Resources are selected by using a combination of
+partition, node, core, memory, GRES and/or constraints (features). 
 
+This configuration is a starting point, from which the configuration is
+expected to evolve to meet the needs of the community as they arise. Please
+[Contact Us](/Contact_Us) if the scheduler config is not working for a given
+workflow or software as we are happy to make adjustments, create Quality of
+Service rules, reservations or help develop tools and workarounds.
 
 # Resource Control and Fairshare 
 
@@ -65,23 +68,27 @@ addition, fairshare can be modified in the other direction, limiting
 individuals, groups and projects to a subset of the available resources.
 Ultimately the goal of a fairshare scheduler is two-fold:
 
- 1. Fairly distribute the available resources over time.
+ 1. Fairly distribute the available resources over time, maximizing overall
+    utilization.
  1. Ensure that all users are equally (un)happy.
 
 If you find yourself more (un)happy than other users, please [Contact
-Us](/#A._Contact_Us) and let us know so we can work with you to bring your
+Us](/Contact_Us) and let us know so we can work with you to bring your
 (un)happiness back in line with the average level.
 
-# Quality of Service 
+# Quality of Service
 
 A QoS can be created to give a user, group or project priority access to some
-set of resources. The most common usage of this has been to provide fast
-turnaround for workloads initiated from web services. When used for "normal"
-user submitted workloads it often becomes a restriction/throttle over time and
-most people who start with a QoS wind up preferring fairshare instead. However,
-in cases where workloads need to be throttled, this is a handy tool and when
-combined with a reservation (below) can provide guaranteed access to a subset
-of resources.
+set of resources. A  common use case for QoS is to provide fast turnaround
+for workloads initiated from web services or for data processing pipelines
+that ingest and precess data from instruments. When used for "normal" user
+submitted workloads it often becomes a restriction/throttle over time and
+most people who start with a QoS wind up preferring fairshare instead.
+However, in cases where workloads need to be throttled, this is a handy tool.
+For instance, the `interactive` partition uses a QoS to limit users to a set
+number of jobs and CPUs in order to ensure there are always at least some
+resources available for others to get fast turnaround on interactive
+sessions. 
 
 # Reservations
 
@@ -91,8 +98,6 @@ space, for example), a reservation can be created to set aside the resource for
 a limited time for the given project. In almost all cases this will reduce the
 overall utilization of the cluster for everyone, however, so it should be used
 sparingly and only when there is no other viable solution. Please [Contact
-Us](/#A._Contact_Us) to get more information about what is possible or to
+Us](/Contact_Us) to get more information about what is possible or to
 request a reservation.
-
-
 

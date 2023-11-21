@@ -1,6 +1,8 @@
 # Connecting with SSH
 
-The most basic and powerful way to connect and use the resources is via `ssh` to a login node. How to accomplish that will depend on what Operating System you use on your laptop or desktop.
+The most basic and powerful way to connect and use the resources is via `ssh`
+to a login node. How to accomplish that will depend on what Operating System
+you use on your laptop or desktop.
 
 ## Mac OS X and Linux
 
@@ -13,7 +15,8 @@ Terminal app.
 
 ## Windows
 
-The first step to connecting from Windows is choosing and installing an SSH client. Some available free options are
+The first step to connecting from Windows is choosing and installing an SSH
+client. Some available free options are
 
  * [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
  * [MobaXterm](https://mobaxterm.mobatek.net/)
@@ -21,19 +24,18 @@ The first step to connecting from Windows is choosing and installing an SSH clie
 
 In particular the combination of [MobaXterm](https://mobaxterm.mobatek.net/)
 with [WSL](https://docs.microsoft.com/en-us/windows/wsl/install) can
-***almost*** make working from Windows in a Linux environment a much more
-pleasant experience (ignoring the pain and effort of getting it set up and
-configured, of course).  Any of these will get a functional `ssh` client onto
-the system. 
+***almost*** make working from Windows in a Linux environment an acceptable
+experience (ignoring the pain and effort of getting it set up and configured,
+of course).  Any of these will get a functional `ssh` client onto the system. 
 
 ## Making the connection
 
-Once a terminal application is opened, then connecting is as simple as `ssh FIRST.LAST@login01.czbiohub.org`, for example:
+Once at a terminal with an available `ssh`, connecting is as simple as `ssh
+USERNAME@HOSTNAME`, for example, to connect to BRUNO I would use my username, john.hanks, and `ssh` to the BRUNO login nodes:
 
 ```
-(base) [griznog@lepomis ~]$ ssh john.hanks@login01.czbiohub.org
+(base) [griznog@lepomis ~]$ ssh john.hanks@login.bruno.czbiohub.org
 Last login: Thu Oct 14 15:20:09 2021 from 10.79.124.15
-[john.hanks@login01 ~]$ 
+[john.hanks@login-01 ~]$ 
 ```
 
-Note, the cluster is only visible on the BioHub network, via the ssh.czbiohub.org jumphost or over a VPN connection.
