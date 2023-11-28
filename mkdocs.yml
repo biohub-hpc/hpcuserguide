@@ -8,7 +8,7 @@ markdown_extensions:
 plugins:
   - kroki:
       DownloadImages: true
-      ServerURL: https://kroki.czbiohub.org
+      ServerURL: http://localhost:51080
       HttpMethod: POST
       FileTypes:
         - png
