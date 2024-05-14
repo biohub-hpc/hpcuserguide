@@ -52,6 +52,54 @@ Currently Loaded Modules:
 [john.hanks@cluster ~]$ 
 ```
 
+## `module spider`
+
+To get information about a specific module, especially how to load it, `module spider`:
+```
+[randall.white@cluster ~]$ module spider cryosparc
+
+-------------------------------------------------------------------------------------------------------------------------------
+  cryosparc:
+-------------------------------------------------------------------------------------------------------------------------------
+    Description:
+      CryoSparc
+
+     Versions:
+        cryosparc/4.4.0-motioncor2-1.6.4
+        cryosparc/4.4.1-motioncor2-1.6.4
+        cryosparc/4.5.1-motioncor2-1.6.4
+     Other possible modules matches:
+        sbgrid/cryosparc-tools
+
+-------------------------------------------------------------------------------------------------------------------------------
+  To find other possible module matches execute:
+
+      $ module -r spider '.*cryosparc.*'
+
+-------------------------------------------------------------------------------------------------------------------------------
+  For detailed information about a specific "cryosparc" package (including how to load the modules) use the module's full name.
+  Note that names that have a trailing (E) are extensions provided by other modules.
+  For example:
+
+     $ module spider cryosparc/4.5.1-motioncor2-1.6.4
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+[randall.white@cluster ~]$ module spider cryosparc/4.5.1-motioncor2-1.6.4
+
+-------------------------------------------------------------------------------------------------------------------------------
+  cryosparc: cryosparc/4.5.1-motioncor2-1.6.4
+-------------------------------------------------------------------------------------------------------------------------------
+    Description:
+      CryoSparc
+
+
+    This module can be loaded directly: module load cryosparc/4.5.1-motioncor2-1.6.4
+
+```
+
+
 ## `module unload|purge`
 
 As implied in the `module list` output, to remove things from the environment you can `module purge`
