@@ -9,48 +9,19 @@
 
 The following table outlines the available storage namespaces in which storage is either already available or can be provisioned upon request.
 
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| Unix Path                  | Disk/Server<br> | Snapshots | On-Site<br> | Off-Site<br>  | AWS Glacier<br> | Best used for/data which is: |
-|                            | Redundancy      |           | Replica     | Replica       | Deep Archive    |                              |
-+============================+=================+===========+=============+===============+=================+==============================+
-| `${HOME}`                  | High            | Yes       | Yes         | No            | No              |  - private data/applications |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/hpc/mydata/${USER}`      | High            | Yes       | Yes         | No            | No              |  - personal working space    |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/local/scratch`<br>       | Low             | No        | No          | No            | No              |  - scratch data              |
-| `/hpc/nodes/${NODE}`       |                 |           |             |               |                 |  - easily reproducible data  |
-|                            |                 |           |             |               |                 |  - intermediate job files    |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/hpc/scratch/${NAME}`     | Low/Medium      | No        | No          | No            | No              |  - scratch data              |
-|                            |                 |           |             |               |                 |  - easily reproducible data  |
-|                            |                 |           |             |               |                 |  - intermediate job files    |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/hpc/projects/${NAME}`    | High            | Yes [^2]  | Yes         | Optional [^1] | Optional [^3]   |  - working/active data sets  |
-|                            |                 |           |             |               |                 |  - results                   |
-|                            |                 |           |             |               |                 |  - difficult to reproduce    |
-|                            |                 |           |             |               |                 |    data                      |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/hpc/archives/${NAME}`    | High            | Yes [^2]  | Yes         | Optional [^1] | Optional [^3]   |  - completed projects        |
-|                            |                 |           |             |               |                 |  - data with retention       |
-|                            |                 |           |             |               |                 |    requirements              |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/hpc/user_apps/${GROUP}`  | High            | Yes [^2]  | Yes         | Yes [^4]      | No              |  - shared application        |
-|                            |                 |           |             |               |                 |    installations             |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/hpc/reference/${NAME}`   | High            | Yes [^2]  | Optional    | Optional      | No              |  - easy to re-download       |
-|                            |                 |           |             |               |                 |  - easy to reproduce         |
-|                            |                 |           |             |               |                 |  - write-once, read-many     |
-|                            |                 |           |             |               |                 |  - storage optimized for     |
-|                            |                 |           |             |               |                 |    reads                     |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/hpc/instruments/${NAME}` | High            | Yes [^2]  | Yes         | Optional [^1] | Optional [^3]   |  - raw or preprocessed       |
-|                            |                 |           |             |               |                 |    instrument data           |
-|                            |                 |           |             |               |                 |  - directory per-instrument  |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
-| `/hpc/websites/${VHOST}`   | Variable        | Optional  | Optional    | Optional      | Optional        |  - static web content        |
-|                            |                 |           |             |               |                 |  - requires a vhost          |
-|                            |                 |           |             |               |                 |    name for website          |
-+----------------------------+-----------------+-----------+-------------+---------------+-----------------+------------------------------+
+| Unix Path                  | Disk/Server<br>Redundancy | Snapshots | On-Site<br>Replica | Off-Site<br>Replica | AWS Glacier<br>Deep Archive | Best used for/data which is: |
+|----------------------------|---------------------------|-----------|--------------------|---------------------|-----------------------------|------------------------------|
+| `${HOME}`                  | High                      | Yes       | Yes                | No                  | No                          | - private data/applications  |
+| `/hpc/mydata/${USER}`      | High                      | Yes       | Yes                | No                  | No                          | - personal working space     |
+| `/local/scratch`<br>`/hpc/nodes/${NODE}` | Low        | No        | No                 | No                  | No                          | - scratch data<br>- easily reproducible data<br>- intermediate job files |
+| `/hpc/scratch/${NAME}`     | Low/Medium                | No        | No                 | No                  | No                          | - scratch data<br>- easily reproducible data<br>- intermediate job files |
+| `/hpc/projects/${NAME}`    | High                      | Yes [^2]  | Yes                | Optional [^1]       | Optional [^3]               | - working/active data sets<br>- results<br>- difficult to reproduce data |
+| `/hpc/archives/${NAME}`    | High                      | Yes [^2]  | Yes                | Optional [^1]       | Optional [^3]               | - completed projects<br>- data with retention requirements |
+| `/hpc/user_apps/${GROUP}`  | High                      | Yes [^2]  | Yes                | Yes [^4]            | No                          | - shared application installations |
+| `/hpc/reference/${NAME}`   | High                      | Yes [^2]  | Optional           | Optional            | No                          | - easy to re-download<br>- easy to reproduce<br>- write-once, read-many<br>- storage optimized for reads |
+| `/hpc/instruments/${NAME}` | High                      | Yes [^2]  | Yes                | Optional [^1]       | Optional [^3]               | - raw or preprocessed instrument data<br>- directory per-instrument |
+| `/hpc/websites/${VHOST}`   | Variable                  | Optional  | Optional           | Optional            | Optional                    | - static web content<br>- requires a vhost name for website |
+
 
 
 [^1]:
