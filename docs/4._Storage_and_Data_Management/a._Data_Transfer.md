@@ -37,7 +37,7 @@ A variety of graphical SFTP clients are available for different OSes:
 | -------- | -------- |
 | [WinSCP](https://winscp.net/eng/index.php)     | Windows     |
 | [Filezilla](https://filezilla-project.org/)     | Cross-Platform     |
-| [Fetch2](https://fetchsoftworks.com/)     | Mac     |
+| [Fetch](https://fetchsoftworks.com/)     | Mac     |
 | [CyberDuck](https://cyberduck.io)     | Mac     |
 | [muCommander](https://www.mucommander.com/)     | Cross-Platform     |
 
@@ -53,7 +53,6 @@ sh
         For directories, you can use the same command format.
 
 
-When setting up your connection to Sherlock in the above programs, use the following information:
 
 |  |  |
 | -------- | -------- |
