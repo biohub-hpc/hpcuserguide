@@ -12,12 +12,23 @@ forum will become a hub where people using the HPC enviornment can exchange
 ideas and suggestions, request enhancements, discuss changes and share
 computational success stories.
 
-### HPC Sysadmin `@griznog`
+### Primary Sysadmin: `@griznog`
 
 You can reach out to the sysadmin by:
 
  * Slack direct message to `@griznog` 
  * email to [john.hanks@czbiohub.org](mailto:john.hanks@czbiohub.org). 
+
+#### HPC Team
+
+| Name    | Role | Slack | Email |
+| --- | ---- | ----- | ----- |
+| John Hanks    | Principal HPC Engineer | `@griznog`  | [john.hanks@czbiohub.org](mailto:john.hanks@czbiohub.org)  |
+| William Law   | Principal HPC Engineer | `@William Law` | [william.law@czbiohub.org](mailto:william.law@czbiohub.org) |
+| Neal Soderquist | Principal HPC Engineer | `@Neal Soderquist` | [neal.soderquist@czbiohub.org](mailto:neal.soderquist@czbiohub.org) |
+| Saransh Kaul | Systems Engineer II | `@Saransh Kaul` | [saransh.kaul@czbiohub.org](mailto:saransh.kaul@czbiohub.org) |
+| Randall White | Staff HPC Engineer | `@RC` | [randall.white@czbiohub.org](mailto:randall.white@czbiohub.org) |
+
 
 ## When?
 
