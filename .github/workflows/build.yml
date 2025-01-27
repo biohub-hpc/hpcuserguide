@@ -22,4 +22,3 @@ jobs:
           conda activate /env
           pip install -y requirements.txt
           mkdocs build
-	  
