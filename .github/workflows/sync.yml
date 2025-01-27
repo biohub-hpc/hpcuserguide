@@ -1,4 +1,4 @@
-name: Snyc files
+name: Sync files
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main     # Trigger only on pushes to the 'main' branch
   pull_request:
     branches:
-      - name
+      - main     # Trigger only on pull requests to the 'main' branch
 
 jobs:
   build-docs:
@@ -30,22 +30,21 @@ jobs:
           pip install -r requirements.txt
           mkdocs build
 
-      - name: 'Upload Artifact'
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
           path: sites
 
-  sync-docs:	
+  sync-docs:
     runs-on: appsmgr-bruno
     needs: build-docs
     steps:
       - name: Download Artifacts
-	uses: actions/download-artifact@v3
-	with:
-	  name: my-artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
 
       - name: Rsync documentation to destination
         run: |
           ls -l sites
-
