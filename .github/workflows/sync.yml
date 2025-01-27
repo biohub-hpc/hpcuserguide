@@ -46,4 +46,4 @@ jobs:
       - name: Rsync documentation to destination
         run: |
           ls -l site
-	  rsync -av sites/* --delete /hpc/websites/onsite.czbiohub.org/hpcdocs/
+	  rsync -avz --delete sites/* /hpc/websites/onsite.czbiohub.org/hpcdocs/
