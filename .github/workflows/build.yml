@@ -20,5 +20,5 @@ jobs:
           module load anaconda
           conda create --prefix ./env python=3.8
           conda activate /env
-          pip install -y requirements.txt
+          pip install -r requirements.txt
           mkdocs build
