@@ -1,0 +1,25 @@
+name: build documentation
+
+on: 
+  pull_request:
+    branches: [main]
+
+
+jobs:  
+  build-docs:
+    runs-on: appsmgr-bruno
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docs
+        run: |
+          set +e
+          pwd
+          hostname
+          . /etc/profile
+          module --version
+          module load anaconda
+          conda create --prefix ./env python=3.8
+          conda activate /env
+          pip install -r requirements.txt
+          mkdocs build
+          rsync -avz --delete site/* /hpc/websites/onsite.czbiohub.org/hpcdocs-pullrequest

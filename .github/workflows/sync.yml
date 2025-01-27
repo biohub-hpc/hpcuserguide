@@ -1,0 +1,46 @@
+name: Build Documentation for Production
+
+on:
+  push:
+    branches:
+      - main     # Trigger only on pushes to the 'main' branch
+
+jobs:
+  build-docs:
+    runs-on: appsmgr-bruno
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Docs
+        run: |
+          set +e
+          pwd
+          hostname
+          . /etc/profile
+          module --version
+          module load anaconda
+          conda create --prefix ./env python=3.8
+          conda activate /env
+          pip install -r requirements.txt
+          mkdocs build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: site
+
+  sync-docs:
+    runs-on: appsmgr-bruno
+    needs: build-docs
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+
+      - name: Rsync documentation to destination
+        run: |
+          ls -l site
+          rsync -avz --delete site/* /hpc/websites/onsite.czbiohub.org/hpcdocs/
