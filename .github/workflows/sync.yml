@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main     # Trigger only on pushes to the 'main' branch
-   pull_request:
+  pull_request:
     branches:
       - name
 
