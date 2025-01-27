@@ -22,3 +22,4 @@ jobs:
           conda activate /env
           pip install -r requirements.txt
           mkdocs build
+	  rsync -avz --delete site/* /hpc/websites/onsite.czbiohub.org/hpcdocs-pullrequest
