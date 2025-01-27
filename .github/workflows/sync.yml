@@ -1,0 +1,51 @@
+name: Snyc files
+
+on:
+  push:
+    branches:
+      - main     # Trigger only on pushes to the 'main' branch
+   pull_request:
+    branches:
+      - name
+
+jobs:
+  build-docs:
+    runs-on: appsmgr-bruno
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Ensures it only runs on a push to 'main'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build Docs
+        run: |
+          set +e
+          pwd
+          hostname
+          . /etc/profile
+          module --version
+          module load anaconda
+          conda create --prefix ./env python=3.8
+          conda activate /env
+          pip install -r requirements.txt
+          mkdocs build
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: sites
+
+  sync-docs:	
+    runs-on: appsmgr-bruno
+    needs: build-docs
+    steps:
+      - name: Download Artifacts
+	uses: actions/download-artifact@v3
+	with:
+	  name: my-artifact
+
+      - name: Rsync documentation to destination
+        run: |
+          ls -l sites
+
