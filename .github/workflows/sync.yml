@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: sites
+          path: site
 
   sync-docs:
     runs-on: appsmgr-bruno
@@ -45,4 +45,5 @@ jobs:
 
       - name: Rsync documentation to destination
         run: |
-          ls -l sites
+          ls -l site
+	  rsync -av sites/* --delete /hpc/websites/onsite.czbiohub.org/hpcdocs/
