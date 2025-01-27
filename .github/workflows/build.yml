@@ -14,11 +14,12 @@ jobs:
         run: |
           set +e
           pwd
-	  hostname
-	  . /etc/profile
-	  module load anaconda
-	  conda create --prefix ./env python=3.8
-	  conda activate /env
-	  pip install -y requirements.txt
-	  mkdocs build
+          hostname
+          . /etc/profile
+          module --version
+          module load anaconda
+          conda create --prefix ./env python=3.8
+          conda activate /env
+          pip install -y requirements.txt
+          mkdocs build
 	  
