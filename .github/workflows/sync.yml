@@ -11,8 +11,6 @@ on:
 jobs:
   build-docs:
     runs-on: appsmgr-bruno
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} # Ensures it only runs on a push to 'main'
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
