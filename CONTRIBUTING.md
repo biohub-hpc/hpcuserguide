@@ -104,3 +104,12 @@ You can navigate to file `site/index.html` and open it on your browser or via co
 ```console
 open site/index.html
 ```
+
+The documentation is rsync into https://onsite.czbiohub.org/hpcdocs/ at Pull Request which can be used
+to view rendered documentation if you dont want to build docs locally. Please note if multiple github 
+actions are triggered by different Pull Request the rsync can be clobbered and results may vary.
+
+For more detail on the github workflow see [.github/workflows/build.yml](https://github.com/czbiohub-sf/hpcuserguide/blob/main/.github/workflows/build.yml) 
+
+The production workflow [.github/workflows/sync.yml](https://github.com/czbiohub-sf/hpcuserguide/blob/main/.github/workflows/sync.yml) will
+sync the files to **/hpc/websites/hpc.czbiohub.org/** which are hosted by apache server at  https://hpc.czbiohub.org/
