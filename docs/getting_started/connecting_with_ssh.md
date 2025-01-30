@@ -57,10 +57,10 @@ Host bruno2
 Host bruno
 	HostName login.bruno.czbiohub.org
 
-Host czi1
+Host czii1
 	HostName czii-login-1.czbiohub.org
 
-Host czi2
+Host czii2
 	HostName czii-login-2.czbiohub.org
 
 Host chi1
