@@ -47,6 +47,16 @@ nav:
       - Software List: software/software_list.md
       - Python: software/python.md
       - Self Managed Software: software/self_manage_software.md
+  - Storage:
+      - storage/overview.md
+      - Data Transfer: storage/data_transfer.md
+      - Use Cases: storage/usecases.md
+  - Hardware: hardware/overview.md
+  - Common Tasks:
+      - Recipes: common_tasks/recipes.md
+      - Pigz: common_tasks/pigz.md
+  - Frequently Asked Questions: faqs/overview.md
+  - Contact Us: contact.md
 
 copyright: Copyright &copy; 2024 Chan Zuckerberg Biohub Network.
 
