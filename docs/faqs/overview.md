@@ -80,7 +80,53 @@ Note: 24000 is an arbitrary value, to connect to multiple nodes just change
 that to any value between 4096 and 65535. If there is an error due to a
 collision just pick another port. 
 
-## Future
+# `${THING}` used to work, broken now.
 
-Watch the #hpc-community Slack channel for updates as we make progress on
-putting a better interface around NoMachine desktop access.
+When something that was working, stops working, here are some of the common things to look for:
+
+* Has anything been added to your `${HOME}/.bashrc` or `${HOME}/.bash_profile`?
+* Have you,possibly inadvertently, installed something into `${HOME}/.local` which causes a conflict in binaries or libraries?
+* Are you hitting a quota or full disk issue? 
+* Has your input data or parameters changed? Now using a larger data set, for instance.
+* Have you tested from an incognito browser window and/or flushed the browser cache?
+
+If none of those things seem to be the issues, reach out to us for additional help troubleshooting.
+
+
+# Why is my `${HOME}` so small?
+
+Cluster operation has a hard dependency on a fast, responsive `${HOME}` and
+software application stack filesystem. Without a working `${HOME}` and ability to
+start applications, the cluster cannot function. The small quota on `${HOME}` is
+to discourage people from running jobs against `${HOME}` and negatively impacting
+performance. The `${HOME}` filesystem is specifically tuned to work well with
+user owned software installs and scripts, configuration files, etc., but is not
+a good place to store intermediate files from jobs or large data sets. Project
+and scratch spaces are provided and optimized for these use cases, see the
+Storage section for more details about what is available and the best location
+for different uses. 
+
+It is, however, convenient to be able to access locations through the `${HOME}`
+path. By using symlinks, you can create your own personal namespace in `${HOME}`.
+For example:
+
+```
+[john.hanks@cluster ~]$ mkdir mydata
+[john.hanks@cluster ~]$ cd mydata
+[john.hanks@cluster mydata]$ ln -s /path/to/something ./something
+[john.hanks@cluster mydata]$ ln -s /path/to/somethingelse ./somethingelse
+[john.hanks@cluster mydata]$ ls
+something  somethingelse
+[john.hanks@cluster mydata]$ 
+```
+
+By using symlinks there a location was created which can be referred to in
+scripts as `${HOME}/mydata` and has links to the actual storage locations I
+use, making them all easy to navigate to from `${HOME}`. 
+
+!!! warning "Warning: Use a subdirectory for symlinks in `${HOME}`"
+
+    Only put symlinks to other filesystems in a subdirectory of
+    `${HOME}` not directly into `${HOME}`. Symlinks directly in `${HOME}` will need
+    to resolve during login and if a given storage system is down, will block login. 
+

@@ -43,7 +43,7 @@ partition, node, core, memory, GRES and/or constraints (features).
 
 This configuration is a starting point, from which the configuration is
 expected to evolve to meet the needs of the community as they arise. Please
-[Contact Us](/Contact_Us) if the scheduler config is not working for a given
+[Contact Us](../contact.md) if the scheduler config is not working for a given
 workflow or software as we are happy to make adjustments, create Quality of
 Service rules, reservations or help develop tools and workarounds.
 
@@ -73,7 +73,7 @@ Ultimately the goal of a fairshare scheduler is two-fold:
  1. Ensure that all users are equally (un)happy.
 
 If you find yourself more (un)happy than other users, please [Contact
-Us](/Contact_Us) and let us know so we can work with you to bring your
+Us](../contact.md) and let us know so we can work with you to bring your
 (un)happiness back in line with the average level.
 
 # Quality of Service
@@ -98,6 +98,6 @@ space, for example), a reservation can be created to set aside the resource for
 a limited time for the given project. In almost all cases this will reduce the
 overall utilization of the cluster for everyone, however, so it should be used
 sparingly and only when there is no other viable solution. Please [Contact
-Us](/Contact_Us) to get more information about what is possible or to
+Us](../contact.md) to get more information about what is possible or to
 request a reservation.
 

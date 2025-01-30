@@ -44,13 +44,11 @@ A variety of graphical SFTP clients are available for different OSes:
 
 #### Rsync 
 
-Using rsync:
-
-sh
-
+```bash
     rsync -avz /path/to/local/file username@hpc-system-address:/path/to/remote/directory
+```
 
-        For directories, you can use the same command format.
+For directories, you can use the same command format.
 
 
 
@@ -78,18 +76,18 @@ sh
 
     Obtain Access Credentials: Ensure you have the necessary credentials (username, password, or SSH keys) provided by your HPC administrator.
     Establish an SSH Connection: Use an SSH client (e.g., ssh command in Unix/Linux, PuTTY for Windows) to connect to the HPC system. Example command:
-
-    sh
-
+    
+   ```
     ssh username@hpc-system-address
+    ```
 
 4. Transferring Files
 
 
 Using SFTP:
 
-sh
 
+```command
 sftp username@hpc-system-address
 
     Once connected, use put to upload files:
@@ -97,7 +95,7 @@ sftp username@hpc-system-address
     sh
 
     put /path/to/local/file /path/to/remote/directory
-
+```
 
 
 5. Verifying Transfer

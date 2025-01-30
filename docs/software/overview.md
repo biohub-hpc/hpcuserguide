@@ -13,6 +13,6 @@ software/applications/tools, these are:
 Each of these will be covered in more detail n the next chapters.
 
 If you need an application added to the cluster environment, please [Contact
-Us](/#A._Contact_Us) and we'll see about getting it installed as quickly as
+Us](../contact.md) and we'll see about getting it installed as quickly as
 possible using the best method for the given request.
 
