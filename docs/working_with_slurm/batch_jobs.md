@@ -41,6 +41,45 @@ examples.
 Most parameters to `sbatch` (many of which are shared with `srun` and `salloc`)
 can be included in the job script as special comments of the form
 
+## Running sbatch commands in-line
+
+You can use the `--wrap` option to run a command in-line without having to create a separate script. 
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sbatch --wrap="echo 'Hello World'"
+Submitted batch job 17885956
+[shahzeb.siddiqui@login-01 ~]$ cat slurm-17885956.out
+Hello World
+```
+
+If you want to write output to file, you can use `--output` option, we can run the same example below and write output
+to file `my_output.log`
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sbatch --output=my_output.log --wrap="echo 'Hello World'"
+Submitted batch job 17885957
+[shahzeb.siddiqui@login-01 ~]$ cat my_output.log
+Hello World
+```
+
+We can confirm via `scontrol show job`, the output and error files are captured in `my_output.log` by running the following. The 
+fields **StdErr** and **StdOut** indicate the paths to output and error file
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ scontrol show job 17885957 | grep -E "StdErr|StdOut"
+   StdErr=/home/shahzeb.siddiqui/my_output.log
+   StdOut=/home/shahzeb.siddiqui/my_output.log
+```
+
+You can also, get email notifications for job status changes by using `--mail-type` and `--mail-user` options. 
+The `--mail-type` option specifies the type of events for which you want to receive email notifications. This 
+can be useful if you anticipate a job taking a long time to run, and you want to be notified when it starts and ends.
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sbatch --mail-user=shahzeb.siddiqui@czbiohub.org --mail-type=BEGIN,END --wrap="sleep 10"
+Submitted batch job 17885964
+```
+```bash
 ## Metaprogramming Applied to Job Scripts
 
 A very powerful way to create jobs is to have a script or command produce the
