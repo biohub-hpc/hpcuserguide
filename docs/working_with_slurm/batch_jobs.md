@@ -3,7 +3,7 @@
 The real power of SLURM for handling lots of work and complex analysis
 pipelines in exploited through the use of batch jobs scripts.
 
-# Job Scripts
+## Job Scripts
 
 The SLURM `sbatch` command is used to submit a job script to the scheduler for
 later execution subject to the load and the jobs priority. SLURM allows a job
@@ -11,7 +11,7 @@ script to be written in any scripting language that accepts the use of `#` as a
 comment delimiter, but typically job scripts are written in a shell scripting
 language such as `sh` or `bash`. A simple job script using the /bin/bash shell is:
 
-```
+```bash
 #!/bin/bash
 
 #SBATCH --job-name=SimpleJobScript
@@ -38,37 +38,10 @@ available variables set by SLURM within the jobs execution environment which
 are available for use within the job script as shown later in more advanced
 examples.
 
-
 Most parameters to `sbatch` (many of which are shared with `srun` and `salloc`)
 can be included in the job script as special comments of the form
 
-```bash
-#SBATCH --parameter=value
-```
-
-Some of the more commonly used options are:
-
-| Option | Description |
-| ------------------- | -------------------------------------------------------|
-| `#SBATCH --time=24:00:00` | Time limit, formatted as `[DD-][HH]:[MM]:[SS]` |
-| `#SBATCH --nodes=N` | Number of nodes |
-| `#SBATCH --partition=PARTITION_NAME` | Partition(s) to run in |
-| `#SBATCH --ntasks=N` | Number of tasks to start in the job |
-| `#SBATCH --cpus-per-task` | Number of cores to request per task |
-| `#SBATCH --job-name=NAME_OF_JOB` | Gives the job a friendly name |
-| `#SBATCH --gpus=N` | Number of GPUs for the job |
-| `#SBATCH --constraints=CONSTRAINTS` | A list of constraints to place on the job |
-
-A full listing of available parameters can be found in the man pages:
-
-| Command | Man Page Command/Link |
-| ----------- | ------------------------------------------------- |
-| `sbatch` | [`man sbatch`](http://slurm.schedmd.com/sbatch.html) |
-| `srun` |  [`man srun`](http://slurm.schedmd.com/srun.html) |
-| `salloc` | [`man salloc`](http://slurm.schedmd.com/salloc.html) |
-`
-
-# Metaprogramming Applied to Job Scripts
+## Metaprogramming Applied to Job Scripts
 
 A very powerful way to create jobs is to have a script or command produce the
 job scripts for you. The simplest example relies on `--wrap` which wraps your
@@ -79,7 +52,7 @@ to do these operations in parallel. One way to do this is with a simple for loop
 and the `sbatch` feature `--wrap` which takes the argument to wrap as input,
 creates and submits a job script for you:
 
-```bash
+```console
 # Bash one-liner to run a command on all files in a directory.  Caveat: this is
 # generally not best practice and for large numbers of files (10's or 100's of 
 # thousands) can cause the scheduler or storage to slow or die. 
