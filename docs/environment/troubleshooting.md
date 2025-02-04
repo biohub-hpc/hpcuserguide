@@ -51,7 +51,7 @@ there is a permission error, since the file doesn't have execute permission (`x`
 bash: permission denied: ./script.sh
 
 [shahzeb.siddiqui@login-01 ~]$ ls -l script.sh
--rw-rw---- 1 elvis elvis 126 Apr  1 08:43 script.sh
+-rw-r--r-- 1 shahzeb.siddiqui shahzeb.siddiqui.grp 125 Feb  4 09:33 script.sh
 ```
 
 ### Using Strict Running Modes
