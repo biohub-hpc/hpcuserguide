@@ -3,6 +3,9 @@ markdown_extensions:
   - tables
   - footnotes
   - def_list
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
   - pymdownx.tasklist:
       custom_checkbox: true
 
@@ -42,10 +45,13 @@ nav:
       - Job Monitoring: working_with_slurm/monitoring.md
       - Troubleshooting Slurm: working_with_slurm/troubleshooting.md
       - Slurm REST API: working_with_slurm/restapi.md
+  - User Environment:
+      - Shell: environment/shell_startup.md
+      - Troubleshooting Environment: environment/troubleshooting.md
+      - Lmod: environment/lmod.md
   - Software:
       - software/overview.md
       - Operating System: software/operatingsystem.md
-      - Lmod: software/lmod.md
       - Software List: software/software_list.md
       - Python: software/python.md
       - Self Managed Software: software/self_manage_software.md
