@@ -39,6 +39,7 @@ nav:
       - Job Dependencies: working_with_slurm/job_dependencies.md
       - Advanced Job Scripting: working_with_slurm/advanced_job_scripting.md
       - Job Monitoring: working_with_slurm/monitoring.md
+      - Troubleshooting Slurm: working_with_slurm/troubleshooting.md
       - Slurm REST API: working_with_slurm/restapi.md
   - Software:
       - software/overview.md
