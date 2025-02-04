@@ -83,7 +83,7 @@ XYZ
 whoami
 
 [shahzeb.siddiqui@login-01 ~]$ bash script.sh
-login24
+login-01
 script.sh: line 6: XYZ: command not found
 
 [shahzeb.siddiqui@login-01 ~]$ echo $?
