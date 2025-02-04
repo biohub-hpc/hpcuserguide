@@ -3,7 +3,7 @@
 The real power of SLURM for handling lots of work and complex analysis
 pipelines in exploited through the use of batch jobs scripts.
 
-# Job Scripts
+## Job Scripts
 
 The SLURM `sbatch` command is used to submit a job script to the scheduler for
 later execution subject to the load and the jobs priority. SLURM allows a job
@@ -11,7 +11,7 @@ script to be written in any scripting language that accepts the use of `#` as a
 comment delimiter, but typically job scripts are written in a shell scripting
 language such as `sh` or `bash`. A simple job script using the /bin/bash shell is:
 
-```
+```bash
 #!/bin/bash
 
 #SBATCH --job-name=SimpleJobScript
@@ -38,37 +38,50 @@ available variables set by SLURM within the jobs execution environment which
 are available for use within the job script as shown later in more advanced
 examples.
 
-
 Most parameters to `sbatch` (many of which are shared with `srun` and `salloc`)
 can be included in the job script as special comments of the form
 
-```bash
-#SBATCH --parameter=value
+## Running sbatch commands in-line
+
+You can use the `--wrap` option to run a command in-line without having to create a separate script. 
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sbatch --wrap="echo 'Hello World'"
+Submitted batch job 17885956
+[shahzeb.siddiqui@login-01 ~]$ cat slurm-17885956.out
+Hello World
 ```
 
-Some of the more commonly used options are:
+If you want to write output to file, you can use `--output` option, we can run the same example below and write output
+to file `my_output.log`
 
-| Option | Description |
-| ------------------- | -------------------------------------------------------|
-| `#SBATCH --time=24:00:00` | Time limit, formatted as `[DD-][HH]:[MM]:[SS]` |
-| `#SBATCH --nodes=N` | Number of nodes |
-| `#SBATCH --partition=PARTITION_NAME` | Partition(s) to run in |
-| `#SBATCH --ntasks=N` | Number of tasks to start in the job |
-| `#SBATCH --cpus-per-task` | Number of cores to request per task |
-| `#SBATCH --job-name=NAME_OF_JOB` | Gives the job a friendly name |
-| `#SBATCH --gpus=N` | Number of GPUs for the job |
-| `#SBATCH --constraints=CONSTRAINTS` | A list of constraints to place on the job |
+```console
+[shahzeb.siddiqui@login-01 ~]$ sbatch --output=my_output.log --wrap="echo 'Hello World'"
+Submitted batch job 17885957
+[shahzeb.siddiqui@login-01 ~]$ cat my_output.log
+Hello World
+```
 
-A full listing of available parameters can be found in the man pages:
+We can confirm via `scontrol show job`, the output and error files are captured in `my_output.log` by running the following. The 
+fields **StdErr** and **StdOut** indicate the paths to output and error file
 
-| Command | Man Page Command/Link |
-| ----------- | ------------------------------------------------- |
-| `sbatch` | [`man sbatch`](http://slurm.schedmd.com/sbatch.html) |
-| `srun` |  [`man srun`](http://slurm.schedmd.com/srun.html) |
-| `salloc` | [`man salloc`](http://slurm.schedmd.com/salloc.html) |
-`
+```console
+[shahzeb.siddiqui@login-01 ~]$ scontrol show job 17885957 | grep -E "StdErr|StdOut"
+   StdErr=/home/shahzeb.siddiqui/my_output.log
+   StdOut=/home/shahzeb.siddiqui/my_output.log
+```
 
-# Metaprogramming Applied to Job Scripts
+You can also, get email notifications for job status changes by using `--mail-type` and `--mail-user` options. 
+The `--mail-type` option specifies the type of events for which you want to receive email notifications. This 
+can be useful if you anticipate a job taking a long time to run, and you want to be notified when it starts and ends.
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sbatch --mail-user=shahzeb.siddiqui@czbiohub.org --mail-type=BEGIN,END --wrap="sleep 10"
+Submitted batch job 17885964
+```
+
+
+## Metaprogramming Applied to Job Scripts
 
 A very powerful way to create jobs is to have a script or command produce the
 job scripts for you. The simplest example relies on `--wrap` which wraps your
@@ -79,7 +92,7 @@ to do these operations in parallel. One way to do this is with a simple for loop
 and the `sbatch` feature `--wrap` which takes the argument to wrap as input,
 creates and submits a job script for you:
 
-```bash
+```console
 # Bash one-liner to run a command on all files in a directory.  Caveat: this is
 # generally not best practice and for large numbers of files (10's or 100's of 
 # thousands) can cause the scheduler or storage to slow or die. 

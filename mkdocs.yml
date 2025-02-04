@@ -9,6 +9,7 @@ markdown_extensions:
 site_name: "CZBioHub HPC User Guide"
 site_url: "https://hpc.czbiohub.org/hpc-user-guide"
 site_description: "CZBioHub HPC User Guide"
+repo_url: https://github.com/czbiohub-sf/hpcuserguide
 site_author: "@griznog,@rc"
 dev_addr: "127.0.0.1:18080"
 theme:
@@ -39,6 +40,7 @@ nav:
       - Job Dependencies: working_with_slurm/job_dependencies.md
       - Advanced Job Scripting: working_with_slurm/advanced_job_scripting.md
       - Job Monitoring: working_with_slurm/monitoring.md
+      - Troubleshooting Slurm: working_with_slurm/troubleshooting.md
       - Slurm REST API: working_with_slurm/restapi.md
   - Software:
       - software/overview.md

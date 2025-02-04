@@ -47,7 +47,7 @@ expected to evolve to meet the needs of the community as they arise. Please
 workflow or software as we are happy to make adjustments, create Quality of
 Service rules, reservations or help develop tools and workarounds.
 
-# Resource Control and Fairshare 
+## Resource Control and Fairshare 
 
 SLURM allows control of resources and access to resources based on a set of
 policies which are expected to evolve over time in response to the needs of the
@@ -56,9 +56,9 @@ granted is through a mechanism known as fairshare. Fairshare attempts to adjust
 a user or group or projects job priority based on historical usage. When it
 works well it achieves two primary goals:
 
- 1. In the event there are one or just a few users it allows them access to as
+-  In the event there are one or just a few users it allows them access to as
     many resources as are available.
- 1. When there are many users and thus contention for resources, it ensures
+-  When there are many users and thus contention for resources, it ensures
     that users with few jobs or historically light usage have their jobs moved
     higher in the queue to maintain a fair distribution of resources.
 
@@ -68,15 +68,15 @@ addition, fairshare can be modified in the other direction, limiting
 individuals, groups and projects to a subset of the available resources.
 Ultimately the goal of a fairshare scheduler is two-fold:
 
- 1. Fairly distribute the available resources over time, maximizing overall
+- Fairly distribute the available resources over time, maximizing overall
     utilization.
- 1. Ensure that all users are equally (un)happy.
+- Ensure that all users are equally (un)happy.
 
 If you find yourself more (un)happy than other users, please [Contact
 Us](../contact.md) and let us know so we can work with you to bring your
 (un)happiness back in line with the average level.
 
-# Quality of Service
+## Quality of Service
 
 A QoS can be created to give a user, group or project priority access to some
 set of resources. A  common use case for QoS is to provide fast turnaround
@@ -90,7 +90,7 @@ number of jobs and CPUs in order to ensure there are always at least some
 resources available for others to get fast turnaround on interactive
 sessions. 
 
-# Reservations
+## Reservations
 
 In cases where a project has a deadline or which requires quick turnaround and
 access to resources that are in shorter supply (nodes with large local scratch
