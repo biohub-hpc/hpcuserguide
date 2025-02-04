@@ -79,7 +79,8 @@ can be useful if you anticipate a job taking a long time to run, and you want to
 [shahzeb.siddiqui@login-01 ~]$ sbatch --mail-user=shahzeb.siddiqui@czbiohub.org --mail-type=BEGIN,END --wrap="sleep 10"
 Submitted batch job 17885964
 ```
-```bash
+
+
 ## Metaprogramming Applied to Job Scripts
 
 A very powerful way to create jobs is to have a script or command produce the

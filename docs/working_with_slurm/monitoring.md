@@ -213,3 +213,104 @@ JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 17757942.ex+     extern               default          1  COMPLETED      0:0
 17757942.0   nvidia-smi               default          1     FAILED      2:0
 ```
+
+### sinfo
+
+The `sinfo` is a slurm command used to display information about nodes and partitions in the cluster. The command below can be used
+to show all available partitions and their status
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sinfo
+PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
+cpu*           up 180-00:00:      2  down* cpu-f-[1-2]
+cpu*           up 180-00:00:      5    mix cpu-b-[2-3,5-6],cpu-g-1
+cpu*           up 180-00:00:      1  alloc cpu-b-1
+cpu*           up 180-00:00:      5   idle cpu-a-[1-2],cpu-b-4,cpu-e-1,cpu-g-2
+gpu            up 180-00:00:     14    mix gpu-a-[1-3],gpu-b-[1-3],gpu-d-[1-2],gpu-f-[1,3],gpu-g-[1-2],gpu-h-[1,8]
+gpu            up 180-00:00:      2  alloc gpu-a-4,gpu-b-4
+gpu            up 180-00:00:     12   idle gpu-b-[5-6],gpu-c-1,gpu-f-[2,4-6],gpu-h-[2-6]
+interactive    up 180-00:00:      6  drng@ gpu-sm01-[09,11,13-15,18]
+interactive    up 180-00:00:      1   drng gpu-sm01-08
+interactive    up 180-00:00:      5    mix cpu-c-[1-3],gpu-sm01-[01,20]
+interactive    up 180-00:00:     17  alloc gpu-e-[2-4,7],gpu-sm01-[02-03,07,10,12,16,19],gpu-sm02-[01-03,11,14,20]
+interactive    up 180-00:00:     23   idle cpu-c-4,gpu-e-[1,5-6,8],gpu-sm01-[04-06,17],gpu-sm02-[04-10,12-13,15-19]
+dtn            up 180-00:00:      2   idle login-[01-02]
+preempted      up 2-00:00:00      6  drng@ gpu-sm01-[09,11,13-15,18]
+preempted      up 2-00:00:00      2  down* cpu-f-[1-2]
+preempted      up 2-00:00:00      1   drng gpu-sm01-08
+preempted      up 2-00:00:00     24    mix cpu-b-[2-3,5-6],cpu-c-[1-3],cpu-g-1,gpu-a-[1-3],gpu-b-[1-3],gpu-d-[1-2],gpu-f-[1,3],gpu-g-[1-2],gpu-h-[1,8],gpu-sm01-[01,20]
+preempted      up 2-00:00:00     20  alloc cpu-b-1,gpu-a-4,gpu-b-4,gpu-e-[2-4,7],gpu-sm01-[02-03,07,10,12,16,19],gpu-sm02-[01-03,11,14,20]
+preempted      up 2-00:00:00     40   idle cpu-a-[1-2],cpu-b-4,cpu-c-4,cpu-e-1,cpu-g-2,gpu-b-[5-6],gpu-c-1,gpu-e-[1,5-6,8],gpu-f-[2,4-6],gpu-h-[2-6],gpu-sm01-[04-06,17],gpu-sm02-[04-10,12-13,15-19]
+preview        up 180-00:00:      1    mix cpu-vm-1
+preview        up 180-00:00:      1   idle cpu-vm-2
+```
+
+If you want to filter by a partition name, you can run
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sinfo -p cpu
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+cpu*         up 180-00:00:      2  down* cpu-f-[1-2]
+cpu*         up 180-00:00:      5    mix cpu-b-[2-3,5-6],cpu-g-1
+cpu*         up 180-00:00:      1  alloc cpu-b-1
+cpu*         up 180-00:00:      5   idle cpu-a-[1-2],cpu-b-4,cpu-e-1,cpu-g-2
+```
+
+To see all idle nodes by partition name `cpu` you can run the following, the **STATE** field indicates the state of the node that are idle
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sinfo -p cpu -t idle
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+cpu*         up 180-00:00:      5   idle cpu-a-[1-2],cpu-b-4,cpu-e-1,cpu-g-2
+```
+
+If job doesnt run on a particular node, you may see node in **DOWN** which can be seen if you run
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sinfo -t down
+PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
+cpu*           up 180-00:00:      2  down* cpu-f-[1-2]
+gpu            up 180-00:00:      0    n/a
+interactive    up 180-00:00:      0    n/a
+dtn            up 180-00:00:      0    n/a
+preempted      up 2-00:00:00      2  down* cpu-f-[1-2]
+preview        up 180-00:00:      0    n/a
+```
+
+You can use the `sinfo -o` option to filter the output by specific columns. The command below will show nodes by state along with CPU count
+and Memory. 
+
+Shown below is summary of few of the options
+
+- `%P` → Partition Name
+- `%D` → Number of Nodes
+- `%N` → Node List
+- `%t` → Node State
+- `%C` → CPU Count
+- `%m` → Total Memory
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sinfo -o "%P %D %N %t %C %m"
+PARTITION NODES NODELIST STATE CPUS(A/I/O/T) MEMORY
+cpu* 2 cpu-f-[1-2] down* 0/0/64/64 750000
+cpu* 5 cpu-b-[2-3,5-6],cpu-g-1 mix 314/326/0/640 1024000+
+cpu* 1 cpu-b-1 alloc 128/0/0/128 1024000
+cpu* 5 cpu-a-[1-2],cpu-b-4,cpu-e-1,cpu-g-2 idle 0/640/0/640 1024000+
+gpu 12 gpu-a-[1-2],gpu-b-[1-3],gpu-d-1,gpu-f-[1,3],gpu-g-[1-2],gpu-h-[1,8] mix 519/665/0/1184 500000+
+gpu 2 gpu-a-4,gpu-b-4 alloc 192/0/0/192 500000+
+gpu 14 gpu-a-3,gpu-b-[5-6],gpu-c-1,gpu-d-2,gpu-f-[2,4-6],gpu-h-[2-6] idle 0/1600/0/1600 500000+
+interactive 6 gpu-sm01-[09,11,13-15,18] drng@ 96/0/0/96 250000
+interactive 1 gpu-sm01-08 drng 16/0/0/16 250000
+interactive 5 cpu-c-[1-3],gpu-sm01-[01,20] mix 50/54/0/104 120000+
+interactive 17 gpu-e-[2-4,7],gpu-sm01-[02-03,07,10,12,16,19],gpu-sm02-[01-03,11,14,20] alloc 272/0/0/272 250000+
+interactive 23 cpu-c-4,gpu-e-[1,5-6,8],gpu-sm01-[04-06,17],gpu-sm02-[04-10,12-13,15-19] idle 0/376/0/376 120000+
+dtn 2 login-[01-02] idle 0/512/0/512 1031864
+preempted 6 gpu-sm01-[09,11,13-15,18] drng@ 96/0/0/96 250000
+preempted 2 cpu-f-[1-2] down* 0/0/64/64 750000
+preempted 1 gpu-sm01-08 drng 16/0/0/16 250000
+preempted 22 cpu-b-[2-3,5-6],cpu-c-[1-3],cpu-g-1,gpu-a-[1-2],gpu-b-[1-3],gpu-d-1,gpu-f-[1,3],gpu-g-[1-2],gpu-h-[1,8],gpu-sm01-[01,20] mix 883/1045/0/1928 120000+
+preempted 20 cpu-b-1,gpu-a-4,gpu-b-4,gpu-e-[2-4,7],gpu-sm01-[02-03,07,10,12,16,19],gpu-sm02-[01-03,11,14,20] alloc 592/0/0/592 250000+
+preempted 42 cpu-a-[1-2],cpu-b-4,cpu-c-4,cpu-e-1,cpu-g-2,gpu-a-3,gpu-b-[5-6],gpu-c-1,gpu-d-2,gpu-e-[1,5-6,8],gpu-f-[2,4-6],gpu-h-[2-6],gpu-sm01-[04-06,17],gpu-sm02-[04-10,12-13,15-19] idle 0/2616/0/2616 120000+
+preview 1 cpu-vm-1 mix 1/7/0/8 128000
+preview 1 cpu-vm-2 idle 0/8/0/8 128000
+```

@@ -90,6 +90,49 @@ cpu-b-5
 cpu-b-3
 ```
 
+###Running jobs on specific nodes
+
+The `--nodelist` option or short option `-w` can be used to specify the nodes to run the job on. This may be useful if you want
+to reproduce results on same node or request a specific hardware configuration that is only available on certain nodes.
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ srun -w cpu-a-1 -p cpu hostname
+cpu-a-1
+```
+
+You can specify multiple nodes using the bracket notation which you typically see in output of `sinfo`. In example below
+we run jobs on `cpu-a-1` and `cpu-a-2`
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ srun -w cpu-a-[1-2] -p cpu hostname
+cpu-a-1
+cpu-a-2
+```
+
+You can specify multiple nodes via comma separated list of nodes as shown below
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ srun -w cpu-a-[1-2],cpu-b-4 -p cpu hostname
+cpu-a-1
+cpu-a-2
+cpu-b-4
+```
+
+You can specify nodes in a file and use `--nodefile` option with path to file. For example we create a file called `nodelist.txt` 
+with list of nodes and run the job on those nodes as shown below
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ cat nodelist.txt
+cpu-a-1
+cpu-a-2
+cpu-b-4
+
+[shahzeb.siddiqui@login-01 ~]$ srun --nodefile=nodelist.txt -p cpu hostname
+cpu-b-4
+cpu-a-1
+cpu-a-2
+```
+
 ### Using srun for a session with a specific type of GPU
 
 Shown below we request access to 1 NVIDIA H100 gpu, which can be useful if you want to request a specific GPU. 
@@ -118,7 +161,6 @@ Mon Feb  3 14:43:29 2025
 |  No running processes found                                                             |
 +-----------------------------------------------------------------------------------------+
 ```
-
 
 ###  Using srun with GPU with X11 forwarding
 
