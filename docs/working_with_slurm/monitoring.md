@@ -34,10 +34,10 @@ There are many free and commercial options, one of which is
 sview &
 ```
 
-The sview window should appear, with the job tab open by default as shown here.
-```bash
-# TODO: Add screenshot of sview once we have something interesting to see.
-```
+The sview window should appear, with the job tab open by default as shown here
+
+![sview](sview.png).
+
 
 ## Command Line 
 
