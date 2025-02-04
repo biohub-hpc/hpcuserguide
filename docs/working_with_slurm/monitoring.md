@@ -65,6 +65,39 @@ useful are given below as a handy reference.
 [user@host]$ scontrol show jobid=JOBID
 ```
 
+You can see list of all available nodes and their status via 
+
+```console
+scontrol show nodes
+```
+
+To see output of a specific node, you can run
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ scontrol show nodes login-01
+NodeName=login-01 Arch=x86_64 CoresPerSocket=64
+   CPUAlloc=0 CPUEfctv=256 CPUTot=256 CPULoad=1.36
+   AvailableFeatures=login,dtn,external,amd,milan
+   ActiveFeatures=login,dtn,external,amd,milan
+   Gres=(null)
+   NodeAddr=login-01 NodeHostName=login-01 Version=24.05.4
+   OS=Linux 4.18.0-553.33.1.el8_10.x86_64 #1 SMP Thu Dec 19 14:28:01 UTC 2024
+   RealMemory=1031864 AllocMem=0 FreeMem=87011 Sockets=2 Boards=1
+   State=IDLE ThreadsPerCore=2 TmpDisk=1000000 Weight=1 Owner=N/A MCS_label=N/A
+   Partitions=dtn
+   BootTime=2025-01-29T09:38:23 SlurmdStartTime=2025-01-29T09:49:10
+   LastBusyTime=2025-02-03T15:20:44 ResumeAfterTime=None
+   CfgTRES=cpu=256,mem=1031864M,billing=256
+   AllocTRES=
+   CurrentWatts=0 AveWatts=0
+```
+
+Note you can see multiple nodes using bracket notation so if you want to see both login nodes you can run
+
+```console
+scontrol show nodes login-[01-02]
+```
+
 ### squeue
 
 `squeue` can be used to get information about jobs and queues in a way that can
@@ -115,6 +148,12 @@ To see all jobs pending on `cpu` partition
 
 ```bash
 squeue -p cpu -t PENDING
+```
+
+To see all nodes allocated to user jobs you can run
+
+```bash
+squeue -u $USER -o "%N"
 ```
 
 ### sacct
