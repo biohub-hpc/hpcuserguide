@@ -2,8 +2,9 @@
 title: Bruno Infrastructure
 description: Description/listing of what resources are currently in Bruno
 ---
-# Nodes
+# Hardware
 
+## Bruno
 | Name              | Cores     | CPU Type | Memory      | TmpFS    | GPUs                | GPU Type |
 | ----------------- | --------: | :------: | ----------: | -------: | ------------------: | :------: |
 |`login-[01-02]`    |  128/node |  AMD Epyc 7003   | 1 TB/node   | 4 TB     | none                | N/A      |
@@ -23,7 +24,7 @@ description: Description/listing of what resources are currently in Bruno
 |`gpu-f-[1-6]` |  112/node  |  INTEL Xeon Platinum 8480c   | 2 TB/node | 2 TB   | 8 x H100 / node      | SXM4     |
 |`gpu-sm01-[01-20]` |  16/node  |  AMD Epyc 7302P   | 256 GB/node | 1.8 TB   | 1 x A40 / node      | PCIe     |
 |`gpu-sm02-[01-20]` |  16/node  |  AMD Epyc 7302P   | 256 GB/node | 1.8 TB   | 1 x A40 / node      | PCIe     |
-[ Computational Resources ]
+
 
 *Note: Change*
 
@@ -36,7 +37,7 @@ description: Description/listing of what resources are currently in Bruno
 
 <hr>
 
-# GPU Summary
+### GPU Summary
 
 | GPU Type       | Bruno Total            |
 | :------------: | :--------------------: |
@@ -45,9 +46,9 @@ description: Description/listing of what resources are currently in Bruno
 | A6000 (48 GB)  | 24                     |
 | A40 (48GB)     | 48                     |
 | H100 (80 GB) | 48 |
-[ GPU Totals by type ]
 
-# Storage Nodes/Appliances
+
+### Storage Nodes/Appliances
 
 
 | Name                 | FileSystem   | Size        |
@@ -60,6 +61,28 @@ description: Description/listing of what resources are currently in Bruno
 | DDN Appliance EXA1   | Lustre       | 5.9 PB      |
 | VAST             | VAST/\[p]NFS | 1 PB        |
 [ Storage servers and appliances ]
+
+## CZII
+
+| Name               | Cores      | CPU Type                                     | Memory      | GPUs                 |
+|--------------------|-----------|----------------------------------------------|------------|----------------------|
+| `czii-login[1-2]`  | 64/node   | AMD EPYC 9354P 32-Core Processor            | 514GB/node | none                 |
+| `czii-cpu-a-[1-2]` | 128/node  | AMD EPYC 9534 64-Core Processor             | 2.3TB/node | none                 |
+| `czii-gpu-a-[1-2]` | 16/node   | Intel(R) Xeon(R) Gold 6326 CPU @ 2.90GHz    | 1T/node    | 2x NVIDIA A40        |
+| `czii-gpu-b-[1-3]` | 64/node   | AMD EPYC 9184X 16-Core Processor            | 1.5TB/node | 8x NVIDIA RTX A6000  |
+| `czii-gpu-c-[1-3]` | 128/node  | AMD EPYC 9334 32-Core Processor             | 2.3TB/node | 4x NVIDIA A40        |
+| `czii-gpu-d-1`     | 128/node  | Intel(R) Xeon(R) Gold 6438Y+                | 1T/node    | 4x NVIDIA RTX 6000   |
+
+## CHI 
+
+
+| Name               | Cores   | CPU Type                         | Memory    | GPUs |
+|--------------------|---------|----------------------------------|-----------|------|
+| `chi-login[1-2]`   | 16/node | AMD EPYC 9354P 32-Core Processor | 128G/node | none |
+| `chi-cpu-a-[1-2]`  | -       | -                                | -         | -    |
+| `chi-cpu-vm-a-[1-2]` | -       | -                                | -         | -    |
+| `chi-gpu-a-1` | -       | -                                | -         | -    |
+
 
 # Network View
 
