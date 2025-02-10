@@ -5,47 +5,43 @@ description: Description/listing of what resources are currently in Bruno
 # Hardware
 
 ## Bruno
-| Name              | Cores     | CPU Type | Memory      | GPUs         |  
-| ----------------- | --------: | :------: | ----------: |--------------|
-|`login-[01-02]`    |  128/node |  AMD Epyc 7003   | 1 TB/node   | none         |
-|`login-fry1`       |  16/node  |  INTEL Xeon E5 2609 v4   | 512 GB      | 4 x TitanXP  |
-|`login-fry2`       |  16/node  |  INTEL Xeon E5 2609 v4   | 256 GB      | 4 x TitanXP  |
-|`login-falcon`     |  32/node  |  INTEL Xeon E5 2667 v4  | 256 GB      | 3 x TitanRTX |
-|`cpu-a-[1-2]`      |  128/node |  AMD Epyc 7H12   | 4 TB/node   |  none                |
-|`cpu-b-[1-6]`      |  128/node |  AMD Epyc 7H12   | 4 TB/node   |  none                |
-|`cpu-c-[1-4]`      |  24/node  |  INTEL Xeon Gold 6126  | 128 GB/node |  none          |
-|`cpu-d-1`          |  32/node  |  AMD Epyc 7601   | 2 TB/node   |  none                |
-|`cpu-e-[1-2]`      |  128/node |  AMD Epyc 7763   | 4 TB/node   |  none                |
-|`gpu-a-[1-4]`      |  128/node |  AMD Epyc 7742   | 2 TB/node   | 4 x A100(40GB)/node |
-|`gpu-b-[1-6]`      |  128/node |  AMD Epyc 7742   | 512 GB/node | 4 x A6000/node      |
-|`gpu-c-1`      |  30/node  |  AMD Epyc 7773X   | 480 GB/node | 8 x A40 / node      |
-|`gpu-d-[1-2]`      |  128/node |  AMD Epyc 7773X   | 2 TB/node   | 4 x A100(80GB)/node |
-|`gpu-e-[1-8]`      |  16/node  |  AMD Epyc 7313P   | 512 GB/node |  1 x A40 / node      |
-|`gpu-f-[1-6]` |  112/node  |  INTEL Xeon Platinum 8480c   | 2 TB/node |  8 x H100 / node  |
-|`gpu-sm01-[01-20]` |  16/node  |  AMD Epyc 7302P   | 256 GB/node | 1 x A40 / node      |
-|`gpu-sm02-[01-20]` |  16/node  |  AMD Epyc 7302P   | 256 GB/node | 1 x A40 / node      |
+| Name               | Cores    | CPU Type                  | Memory      | GPUs                |
+| ------------------ | -------: | :-----------------------: | ----------: | ------------------- |
+| `login-[01-02]`    | 128/node | AMD Epyc 7003             | 1 TB/node   | none                |
+| `login-fry1`       | 16/node  | INTEL Xeon E5 2609 v4     | 512 GB      | 4 x TitanXP         |
+| `login-fry2`       | 16/node  | INTEL Xeon E5 2609 v4     | 256 GB      | 4 x TitanXP         |
+| `login-falcon`     | 32/node  | INTEL Xeon E5 2667 v4     | 256 GB      | 3 x TitanRTX        |
+| `cpu-a-[1-2]`      | 128/node | AMD Epyc 7H12             | 4 TB/node   | none                |
+| `cpu-b-[1-6]`      | 128/node | AMD Epyc 7H12             | 4 TB/node   | none                |
+| `cpu-c-[1-4]`      | 24/node  | INTEL Xeon Gold 6126      | 128 GB/node | none                |
+| `cpu-e-[1-2]`      | 128/node | AMD Epyc 7763             | 4 TB/node   | none                |
+| `gpu-a-[1-4]`      | 128/node | AMD Epyc 7742             | 2 TB/node   | 4 x A100(40GB)/node |
+| `gpu-b-[1-6]`      | 128/node | AMD Epyc 7742             | 512 GB/node | 4 x A6000/node      |
+| `gpu-c-1`          | 30/node  | AMD Epyc 7773X            | 480 GB/node | 8 x A40 / node      |
+| `gpu-d-[1-2]`      | 128/node | AMD Epyc 7773X            | 2 TB/node   | 4 x A100(80GB)/node |
+| `gpu-e-[1-8]`      | 16/node  | AMD Epyc 7313P            | 512 GB/node | 1 x A40 / node      |
+| `gpu-f-[1-6]`      | 112/node | INTEL Xeon Platinum 8480c | 2 TB/node   | 8 x H100 / node     |
+| `gpu-g-[1-2]`      | 64/node  | AMD EPYC 9334             | 1 TB/node   | 4 x L40S / node     |
+| `gpu-h-[1-6,8]`    | 64/node  | INTEL Xeon Platinum 8592+ | 2 TB/node   | 8 x H200 / node     |
+| `gpu-sm01-[01-20]` | 16/node  | AMD Epyc 7302P            | 256 GB/node | 1 x A40 / node      |
+| `gpu-sm02-[01-20]` | 16/node  | AMD Epyc 7302P            | 256 GB/node | 1 x A40 / node      |
 
-
-*Note: Change*
-
-* Total User Partitions CPU cores: 
-    * Today: 2336
-    * EOY: 3296
-* Total GPUs: 
-    * Today: 107
-    * EOY: 111
+* Total User Partitions CPU cores: 5568
+* Total GPUs: 216
 
 <hr>
 
 ### GPU Summary
 
-| GPU Type       | Bruno Total            |
-| :------------: | :--------------------: |
-| A100 (40 GB)   | 16                     |
-| A100 (80 GB)   | 8                      |
-| A6000 (48 GB)  | 24                     |
-| A40 (48GB)     | 48                     |
-| H100 (80 GB) | 48 |
+| GPU Type       | Bruno Total |
+| :------------: | :---------: |
+| A100 (40 GB)   | 16          |
+| A100 (80 GB)   | 8           |
+| A6000 (48 GB)  | 24          |
+| A40 (48GB)     | 56          |
+| H100 (80 GB)   | 48          |
+| H200 (141 GB)  | 56          |
+| L40S (48 GB)   | 8           |
 
 
 ### Storage Nodes/Appliances
@@ -73,7 +69,7 @@ description: Description/listing of what resources are currently in Bruno
 | `czii-gpu-c-[1-3]` | 128/node  | AMD EPYC 9334 32-Core Processor             | 2.3TB/node | 4x NVIDIA A40        |
 | `czii-gpu-d-1`     | 128/node  | Intel(R) Xeon(R) Gold 6438Y+                | 1T/node    | 4x NVIDIA RTX 6000   |
 
-## CHI 
+## CHI
 
 
 | Name               | Cores   | CPU Type                         | Memory    | GPUs |
