@@ -5,8 +5,18 @@ description: Description/listing of what resources are currently in Bruno
 # Hardware
 
 ## Bruno
+
+| Category       | Count  |
+|---------------|--------|
+| Total CPUs    | 5568   |
+| Total GPUs    | 216    |
+| Total Nodes   | 96     |
+| Login Nodes   | 2      |
+| CPU Nodes     | 14     |
+| GPU Nodes     | 80     |
+
 | Name               | Cores    | CPU Type                  | Memory      | GPUs                |
-| ------------------ | -------: | :-----------------------: | ----------: | ------------------- |
+| ------------------ |----------|---------------------------|-------------| ------------------- |
 | `login-[01-02]`    | 128/node | AMD Epyc 7003             | 1 TB/node   | none                |
 | `login-fry1`       | 16/node  | INTEL Xeon E5 2609 v4     | 512 GB      | 4 x TitanXP         |
 | `login-fry2`       | 16/node  | INTEL Xeon E5 2609 v4     | 256 GB      | 4 x TitanXP         |
@@ -26,22 +36,17 @@ description: Description/listing of what resources are currently in Bruno
 | `gpu-sm01-[01-20]` | 16/node  | AMD Epyc 7302P            | 256 GB/node | 1 x A40 / node      |
 | `gpu-sm02-[01-20]` | 16/node  | AMD Epyc 7302P            | 256 GB/node | 1 x A40 / node      |
 
-* Total User Partitions CPU cores: 5568
-* Total GPUs: 216
 
-<hr>
-
-### GPU Summary
-
-| GPU Type       | Bruno Total |
-| :------------: | :---------: |
-| A100 (40 GB)   | 16          |
-| A100 (80 GB)   | 8           |
-| A6000 (48 GB)  | 24          |
-| A40 (48GB)     | 56          |
-| H100 (80 GB)   | 48          |
-| H200 (141 GB)  | 56          |
-| L40S (48 GB)   | 8           |
+| GPU Type      | Bruno Total |
+|---------------|-------------|
+| A100 (40 GB)  | 16          |
+| A100 (80 GB)  | 8           |
+| A6000 (48 GB) | 24          |
+| A40 (48GB)    | 56          |
+| H100 (80 GB)  | 48          |
+| H200 (141 GB) | 56          |
+| L40S (48 GB)  | 8           |
+| Total GPUs    | 216         |
 
 
 ### Storage Nodes/Appliances
@@ -60,14 +65,22 @@ description: Description/listing of what resources are currently in Bruno
 
 ## CZII
 
-| Name               | Cores      | CPU Type                                     | Memory      | GPUs                 |
-|--------------------|-----------|----------------------------------------------|------------|----------------------|
-| `czii-login[1-2]`  | 64/node   | AMD EPYC 9354P 32-Core Processor            | 514GB/node | none                 |
-| `czii-cpu-a-[1-2]` | 128/node  | AMD EPYC 9534 64-Core Processor             | 2.3TB/node | none                 |
-| `czii-gpu-a-[1-2]` | 16/node   | Intel(R) Xeon(R) Gold 6326 CPU @ 2.90GHz    | 1T/node    | 2x NVIDIA A40        |
-| `czii-gpu-b-[1-3]` | 64/node   | AMD EPYC 9184X 16-Core Processor            | 1.5TB/node | 8x NVIDIA RTX A6000  |
-| `czii-gpu-c-[1-3]` | 128/node  | AMD EPYC 9334 32-Core Processor             | 2.3TB/node | 4x NVIDIA A40        |
-| `czii-gpu-d-1`     | 128/node  | Intel(R) Xeon(R) Gold 6438Y+                | 1T/node    | 4x NVIDIA RTX 6000   |
+| Name               | Cores      | CPU Type                                     | Memory      | GPUs                |
+|--------------------|-----------|----------------------------------------------|------------|---------------------|
+| `czii-login[1-2]`  | 64/node   | AMD EPYC 9354P 32-Core Processor            | 514GB/node | none                |
+| `czii-cpu-a-[1-2]` | 128/node  | AMD EPYC 9534 64-Core Processor             | 2.3TB/node | none                |
+| `czii-gpu-a-[1-2]` | 16/node   | Intel(R) Xeon(R) Gold 6326 CPU @ 2.90GHz    | 1T/node    | 2x NVIDIA A40       |
+| `czii-gpu-b-[1-3]` | 64/node   | AMD EPYC 9184X 16-Core Processor            | 1.5TB/node | 8x NVIDIA RTX A6000 |
+| `czii-gpu-c-[1-3]` | 128/node  | AMD EPYC 9334 32-Core Processor             | 2.3TB/node | 4x NVIDIA A40       |
+| `czii-gpu-d-1`     | 128/node  | Intel(R) Xeon(R) Gold 6438Y+                | 1T/node    | 4x NVIDIA RTX A6000 |
+
+
+| GPU Type          | Total |
+|-------------------|-------|
+| A40               | 16    |
+| RTX A6000 (48 GB) | 28    |
+| Total GPUs        | 44    |
+
 
 ## CHI
 
