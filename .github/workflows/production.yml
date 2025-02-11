@@ -31,7 +31,7 @@ jobs:
           name: my-artifact
           path: site
 
-  sync-docs:
+  rsync-to-production:
     runs-on: appsmgr-bruno
     needs: build-docs
     steps:
