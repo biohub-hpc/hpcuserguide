@@ -1,12 +1,11 @@
-name: build documentation
+name: Build Documentation for Preview
 
 on: 
   pull_request:
     branches: [main]
 
-
 jobs:  
-  build-docs:
+  preview-docs:
     runs-on: appsmgr-bruno
     steps:
       - uses: actions/checkout@v4
