@@ -96,7 +96,12 @@ The documentation is rsync into https://onsite.czbiohub.org/hpcdocs/ at Pull Req
 to view rendered documentation if you don't want to build docs locally. Please note if multiple GitHub 
 actions are triggered by different Pull Request the rsync can be clobbered and results may vary.
 
-For more detail on the GitHub workflow see [.github/workflows/build.yml](https://github.com/czbiohub-sf/hpcuserguide/blob/main/.github/workflows/build.yml) 
+For more detail on the GitHub workflow see [.github/workflows/preview.yml](https://github.com/czbiohub-sf/hpcuserguide/blob/main/.github/workflows/preview.yml) 
 
-The production workflow [.github/workflows/sync.yml](https://github.com/czbiohub-sf/hpcuserguide/blob/main/.github/workflows/sync.yml) will
+The production workflow [.github/workflows/production.yml](https://github.com/czbiohub-sf/hpcuserguide/blob/main/.github/workflows/production.yml) will
 sync the files to **/hpc/websites/hpc.czbiohub.org/** which are hosted by apache server at  https://hpc.czbiohub.org/
+
+## Adding New Pages
+
+If you want to add new documentation pages, you can create a new markdown file in the desired location under `docs` directory. When you add a new page, 
+you should update the `mkdocs.yml` file to include the new page in the navigation. 
