@@ -85,12 +85,14 @@ description: Description/listing of what resources are currently in Bruno
 ## CHI
 
 
-| Name               | Cores   | CPU Type                         | Memory    | GPUs |
-|--------------------|---------|----------------------------------|-----------|------|
-| `chi-login[1-2]`   | 16/node | AMD EPYC 9354P 32-Core Processor | 128G/node | none |
-| `chi-cpu-a-[1-2]`  | -       | -                                | -         | -    |
-| `chi-cpu-vm-a-[1-2]` | -       | -                                | -         | -    |
-| `chi-gpu-a-1` | -       | -                                | -         | -    |
+| Name               | Cores    | CPU Type                       | Memory    | GPUs           |
+|--------------------|----------|--------------------------------|-----------|----------------|
+| `chi-login[1-2]`   | 16/node  | AMD EPYC 9354P 32-Core Processor | 128G/node | none           |
+| `chi-cpu-a-[1-2]`  | 256/node | AMD EPYC 9754                  | 2.3T/node | none           |
+| `chi-cpu-b-[1-2]`  | 256/node | AMD EPYC 9754                  | 1.5T/node | none           |
+| `chi-cpu-vm-a-[1-2]` | 8/nodes  | AMD EPYC 9534                | 128G/node | none           |
+| `chi-gpu-a-1` | 256/node | AMD EPYC 9754 128-Core Processor    | 2.3T/node | 8x NVIDIA H200 |
+
 
 
 # Network View
