@@ -98,7 +98,7 @@ Note you can see multiple nodes using bracket notation so if you want to see bot
 scontrol show nodes login-[01-02]
 ```
 
-### squeue
+### View Pending Jobs - squeue
 
 `squeue` can be used to get information about jobs and queues in a way that can
 be further manipulated with scripts or other tools or just in a human readable
@@ -156,7 +156,60 @@ To see all nodes allocated to user jobs you can run
 squeue -u $USER -o "%N"
 ```
 
-### sacct
+### Updating Jobs 
+
+To cancel a job:
+
+```console
+scancel $JobID
+```
+
+You can cancel more than one job in a single call:
+
+```console
+scancel $JobID1 $JobID2 $JobID3
+```
+
+You can cancel all of your jobs:
+
+```console
+scancel -u $USER
+```
+
+!!! warning
+    Be careful with this command, it will cancel all of your jobs, including
+    any that are running. If you want to cancel several hundred jobs, do not perform this action in one bulk change; rather cancel a subset 
+    of jobs at a time to avoid overwhelming the scheduler. 
+
+To change the timelimit for a job:
+
+```console
+scontrol update jobid=$JobID timelimit=$new_timelimit
+```
+
+In example below we have job with 30min timelimit, as shown below
+
+```console
+[shahzeb.siddiqui@login-02 ~]$ scontrol show job 18019500 | grep TimeLimit
+   RunTime=00:01:43 TimeLimit=00:30:00 TimeMin=N/A
+```
+
+We can decrease the timelimit as user to a lower value but we can't increase the value. This can only be done with a system administrator
+```console
+[shahzeb.siddiqui@login-02 ~]$ scontrol update jobid=18019500 timelimit=00:15:00
+[shahzeb.siddiqui@login-02 ~]$ scontrol show job 18019500 | grep TimeLimit
+   RunTime=00:03:20 TimeLimit=00:15:00 TimeMin=N/A
+```
+
+Once the timelimit is set we cant increase the value, for instance if its set to 15min we can't increase it to 20min. If you want to increase the value
+please contact the system administrator.
+
+```console
+[shahzeb.siddiqui@login-02 ~]$ scontrol update jobid=18019500 timelimit=00:20:00
+Access/permission denied for job 18019500
+```
+
+### Job Accounting - sacct
 
 The `sacct` command is used to view accounting information about jobs which can be really useful for viewing historical data.
 
@@ -253,7 +306,7 @@ JobID           JobName  Partition    Account  AllocCPUS      State ExitCode
 17757942.0   nvidia-smi               default          1     FAILED      2:0
 ```
 
-### sinfo
+### Slurm Info - sinfo
 
 The `sinfo` is a slurm command used to display information about nodes and partitions in the cluster. The command below can be used
 to show all available partitions and their status
