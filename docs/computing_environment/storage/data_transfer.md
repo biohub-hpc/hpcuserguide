@@ -45,7 +45,7 @@ A variety of graphical SFTP clients are available for different OSes:
 #### Rsync 
 
 ```bash
-    rsync -avz /path/to/local/file username@hpc-system-address:/path/to/remote/directory
+rsync -avz /path/to/local/file username@hpc-system-address:/path/to/remote/directory
 ```
 
 For directories, you can use the same command format.
@@ -63,7 +63,7 @@ For directories, you can use the same command format.
 
 1. Understanding File Transfer Protocols
 
-    SCP (Secure Copy Protocol): A secure way to transfer files between local and remote systems. It uses SSH (Secure Shell) for data transfer and authentication.
+    SCP ([Secure Copy Protocol](https://en.wikipedia.org/wiki/Secure_copy_protocol)): A secure way to transfer files between local and remote systems. It uses SSH (Secure Shell) for data transfer and authentication.
     SFTP (Secure File Transfer Protocol): An extension of SSH, it allows for secure file transfer and access to the file system.
     rsync: A fast and versatile command-line tool for copying files and directories locally and remotely. It can synchronize files between two locations while minimizing data transfer by only sending differences.
 
@@ -77,29 +77,27 @@ For directories, you can use the same command format.
     Obtain Access Credentials: Ensure you have the necessary credentials (username, password, or SSH keys) provided by your HPC administrator.
     Establish an SSH Connection: Use an SSH client (e.g., ssh command in Unix/Linux, PuTTY for Windows) to connect to the HPC system. Example command:
     
-   ```
+    ```bash
     ssh username@hpc-system-address
     ```
 
 4. Transferring Files
 
+    Using SFTP:
 
-Using SFTP:
 
-
-```command
-sftp username@hpc-system-address
-
-    Once connected, use put to upload files:
-
-    sh
-
-    put /path/to/local/file /path/to/remote/directory
-```
+    ```command
+    sftp username@hpc-system-address
+    
+        Once connected, use put to upload files:
+    
+        sh
+    
+        put /path/to/local/file /path/to/remote/directory
+    ```
 
 
 5. Verifying Transfer
-
     Check File Integrity: After transfer, log in to the HPC system and verify that the files have been transferred correctly by checking file sizes and contents.
 
 6. Automating Transfers
