@@ -13,20 +13,20 @@ real resource. There are several differences,however, that are specific to
 HPC/HTC which, in effect, make it HPC/HTC (even if configured to run on top of
 a Cloud environment).
 
-1. A common Operating System image, providing a consistent kernel, driver and
+- A common Operating System image, providing a consistent kernel, driver and
    software environment on all resources.
-1. A high speed interconnect dedicated to internode trusted communication and
+- A high speed interconnect dedicated to internode trusted communication and
    for accessing storage.
-1. A scheduler, accepting requests and managing the resources, starting and
+- A scheduler, accepting requests and managing the resources, starting and
    stopping processes, etc.
-1. A common storage namespace on all nodes, no confusion about which node has
+- A common storage namespace on all nodes, no confusion about which node has
    what data or storage mounts.
-1. A centrally maintained software stack, with installs of a wide range of
+- A centrally maintained software stack, with installs of a wide range of
    software ready and easy to access and use, and consistent across all the
    cluster nodes.
-1. A set of login nodes, providing an interface for users to use command line
+- A set of login nodes, providing an interface for users to use command line
    tools, submit jobs interactively or in batch and access/manage data.
-1. A web interface providing a graphical interface to GUI tools and software
+- A web interface providing a graphical interface to GUI tools and software
    like Jupyter Notebooks, RStudio, etc.
 
 This is a very simple, but powerful, paradigm for accessing and using

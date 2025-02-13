@@ -31,8 +31,15 @@ extra:
       link: https://www.czbiohub.org
 nav:
   - Home: index.md
+  - Computing Environment:
+    - computing_environment/overview.md
+    - Hardware: computing_environment/hardware/overview.md
+    - Operating System: computing_environment/operatingsystem.md
+    - Storage:
+      - computing_environment/storage/overview.md
+      - Data Transfer: computing_environment/storage/data_transfer.md
+      - Use Cases: computing_environment/storage/usecases.md
   - Getting Started:
-    - getting_started/overview.md
     - Connecting with SSH: getting_started/connecting_with_ssh.md
     - Connecting with OnDemand: getting_started/connecting_with_ondemand.md
   - Slurm:
@@ -52,15 +59,9 @@ nav:
       - Lmod: environment/lmod.md
   - Software:
       - software/overview.md
-      - Operating System: software/operatingsystem.md
       - Software List: software/software_list.md
       - Python: software/python.md
       - Self Managed Software: software/self_manage_software.md
-  - Storage:
-      - storage/overview.md
-      - Data Transfer: storage/data_transfer.md
-      - Use Cases: storage/usecases.md
-  - Hardware: hardware/overview.md
   - Common Tasks:
       - Recipes: common_tasks/recipes.md
       - Pigz: common_tasks/pigz.md
