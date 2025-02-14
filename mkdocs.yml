@@ -62,6 +62,7 @@ nav:
       - Software List: software/software_list.md
       - Python: software/python.md
       - Self Managed Software: software/self_manage_software.md
+      - GPUs: software/gpu.md
   - Common Tasks:
       - Recipes: common_tasks/recipes.md
       - Pigz: common_tasks/pigz.md
