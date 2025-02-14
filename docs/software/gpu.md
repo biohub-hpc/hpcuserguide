@@ -260,3 +260,20 @@ Process is running on CPU: 113
 [shahzeb.siddiqui@login-01 jobs]$ numactl --cpunodebind=1 ./cpu_id
 Process is running on CPU: 94
 ```
+
+We can run this same program with `srun` and you can see the CPU ID that will be set. We will use `--cpu-bind=verbose` and you will notice that Slurm will apply a mask when setting
+the CPUs.
+
+```console
+[shahzeb.siddiqui@login-01 jobs]$ srun -n4 -p cpu --cpu-bind=verbose ./cpu_id
+srun: job 18030922 queued and waiting for resources
+srun: job 18030922 has been allocated resources
+cpu-bind=MASK - cpu-b-4, task  0  0 [1282813]: mask 0x800000000000000000000000000 set
+cpu-bind=MASK - cpu-b-4, task  1  1 [1282814]: mask 0x20000000000000000000000000000000 set
+cpu-bind=MASK - cpu-b-4, task  2  2 [1282815]: mask 0x40000000000000000000000000000000 set
+cpu-bind=MASK - cpu-b-4, task  3  3 [1282816]: mask 0x80000000000000000000000000000000 set
+Process is running on CPU: 125
+Process is running on CPU: 126
+Process is running on CPU: 127
+Process is running on CPU: 107
+```
