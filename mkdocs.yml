@@ -59,7 +59,7 @@ nav:
       - Lmod: environment/lmod.md
   - Software:
       - software/overview.md
-      - Software List: software/software_list.md
+      - Software List: software/software_modules.md
       - Python: software/python.md
       - Self Managed Software: software/self_manage_software.md
       - GPUs: software/gpu.md
