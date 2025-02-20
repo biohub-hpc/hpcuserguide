@@ -61,7 +61,7 @@ nav:
       - software/overview.md
       - Software List: software/software_modules.md
       - Python: software/python.md
-      - Conntainer: software/container.md
+      - Container: software/container.md
       - Self Managed Software: software/self_manage_software.md
       - GPUs: software/gpu.md
   - Common Tasks:
