@@ -1,4 +1,4 @@
-# Introduction
+# Storage
 
 HPC storage systems are designed to cater to different data needs, from temporary scratch space to long-term archival storage. 
 They offer a combination of high capacity, redundancy, and accessibility to support the demanding requirements of large-scale computational tasks and data management. 
@@ -10,7 +10,7 @@ Understanding the types and uses of different storage paths helps users optimize
     This is a draft of the storage description, layout and recommended usage.
     Comments/suggestions/critiques to us in Slack #hpc-community.
 
-# Storage Namespaces
+## Storage Namespaces
 
 The following table outlines the available storage namespaces in which storage is either already available or can be provisioned upon request.
 
@@ -42,8 +42,9 @@ The following table outlines the available storage namespaces in which storage i
     `/hpc/user_apps` may be replicated read-only and require a specific host or
     hosts for writes.
 
-# Namespace Details
-## `${HOME}`
+## Namespace Details
+
+###  Home Directory - `${HOME}`
 
 The user `${HOME}` directory, also known as `~` and on Scientific Computing
 systems, always located at `/home/${USER}`, is for private user data. The
@@ -54,7 +55,7 @@ should NEVER be shared with another account or user on the system. If there is a
 need for multiple people to share an account, please request a shared service
 account that is not a real person.
 
-## `/hpc/mydata/${USER}`
+###  Extended Personal Workspace - `/hpc/mydata/${USER}`
 
 This location is provided to give each user 1 TB of personal working space
 where they can relax permissions to share data or work on small collaborations
@@ -62,7 +63,7 @@ without needed to request storage spaces. It's intended to provide a space to
 try things out and once a project has matured, to then request project, archive
 or other explicit space for the project.
 
-## `/local/scratch`, `/hpc/nodes/${NODE}`
+###  Local Scratch - `/local/scratch`, `/hpc/nodes/${NODE}`
 
 !!! Warning
 
@@ -77,7 +78,7 @@ is then NFS exported to all other nodes and can be found at
 local storage is not treated as a consumable by Slurm and filling a node's
 local disks can negatively impact other jobs.
 
-## `/hpc/scratch/${NAME}`
+### Shared Scratch - `/hpc/scratch/${NAME}`
 
 !!! warning
 
@@ -89,7 +90,7 @@ spaces are subject to being lost as a result of very few disk failures or being
 purged and rebuilt on relatively short notice to address performance or space
 issues.
 
-## `/hpc/projects/${NAME}`
+###  Project Space - `/hpc/projects/${NAME}`
 
 Project spaces are intended to be good working spaces with high reliability.
 Snapshots, where possible, provide a history to help recover from mistaken
@@ -98,7 +99,7 @@ subject to the usage pattern of the project. The level of replication/backup
 and long term archiving can be adjusted as needed for a given projects
 requirements.
 
-## `/hpc/archives/${NAME}`
+### Archive Space - `/hpc/archives/${NAME}`
 
 Archive spaces are intended to be write-once and then never or extremely rarely
 updated, until they reach a pre-determined end-of-life and are removed. The
@@ -106,7 +107,7 @@ underlying on-prem/site storage will be optimized for reliability and read
 performance and this is a good location to park data which needs to be made
 available via the web or [Globus](https://globus.org) on a long term basis.
 
-## `/hpc/user_apps/${GROUP}`
+###  Application Space - `/hpc/user_apps/${GROUP}`
 
 This location provides an optimized location for installing shared
 applications. It is organized by groups, with each PI/lab group having a
@@ -115,7 +116,7 @@ as widely as need. Optionally a `module` can be added so that applications here
 can be managed with `module load appname/version` after doing `module load
 ${GROUP}`.
 
-## `/hpc/reference/${NAME}`
+###  Reference Data - `/hpc/reference/${NAME}`
 
 The reference location is provided as a place to store on-site copies of public
 or other reference data to avoid re-downloading the same datasets repeatedly.
@@ -124,7 +125,7 @@ copy everyone can access and use. Only things easy to reproduce or re-download
 should be kept here. This space is optimized for reading to support being used
 in scale-out workflows that need to access reference data.
 
-## `/hpc/instruments/${NAME}`
+###  Instrument Data - `/hpc/instruments/${NAME}`
 
 Storing data from instruments presents some special problems. It's common to
 have an instrument controlled by a Windows PC which cannot be updated due to
@@ -136,7 +137,7 @@ read-only to all other systems, it's possible to maintain a long snapshot
 history to enable recovering from a potential ransomware infection with minimal
 data loss. 
 
-## `/hpc/websites/${VHOST}`
+### Static Websites - `/hpc/websites/${VHOST}`
 
 It's often convenient to be able to produce static website content from the HPC
 environment and make it available via a public website. The most basic use of

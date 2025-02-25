@@ -21,13 +21,15 @@ You can reach out to the sysadmin by:
 
 #### HPC Team
 
-| Name             | Role                   | Slack               | Email                                                               |
-|------------------|------------------------|---------------------|---------------------------------------------------------------------|
-| John Hanks       | Principal HPC Engineer | `@griznog`          | [john.hanks@czbiohub.org](mailto:john.hanks@czbiohub.org)           |
-| William Law      | Principal HPC Engineer | `@William Law`      | [william.law@czbiohub.org](mailto:william.law@czbiohub.org)         |
-| Neal Soderquist  | Principal HPC Engineer | `@Neal Soderquist`  | [neal.soderquist@czbiohub.org](mailto:neal.soderquist@czbiohub.org) |
-| Saransh Kaul     | Systems Engineer II    | `@Saransh Kaul`     | [saransh.kaul@czbiohub.org](mailto:saransh.kaul@czbiohub.org)       |
-| Shahzeb Siddiqui | Principle HPC Engineer | `@Shahzeb Siddiqui` | [shahzeb.shahzeb@czbiohub.org](mailto:shahzeb.shahzeb@czbiohub.org)     |
+| Name              | Role                    | Slack               | Email                                                               |
+|-------------------|-------------------------|---------------------|---------------------------------------------------------------------|
+| John Hanks        | Principal HPC Engineer  | `@griznog`          | [john.hanks@czbiohub.org](mailto:john.hanks@czbiohub.org)           |
+| William Law       | Principal HPC Engineer  | `@William Law`      | [william.law@czbiohub.org](mailto:william.law@czbiohub.org)         |
+| Nathan Hammond    | Bioinformatics Engineer | `@nathan.hammond`   | [nathan.hammond@czbiohub.org](mailto:nathan.hammond@czbiohub.org)   |
+| Virender Kumar    | Principal HPC Engineer  | `@Virender Kumar`   | [virender.kumar@czbiohub.org](mailto:virender.kumar@czbiohub.org)   | 
+| Neal Soderquist   | Principal HPC Engineer  | `@Neal Soderquist`  | [neal.soderquist@czbiohub.org](mailto:neal.soderquist@czbiohub.org) |
+| Saransh Kaul      | Systems Engineer II     | `@Saransh Kaul`     | [saransh.kaul@czbiohub.org](mailto:saransh.kaul@czbiohub.org)       |
+| Shahzeb Siddiqui  | Principle HPC Engineer  | `@Shahzeb Siddiqui` | [shahzeb.shahzeb@czbiohub.org](mailto:shahzeb.shahzeb@czbiohub.org) |
 
 
 ## When?
