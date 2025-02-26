@@ -1,3 +1,5 @@
+Generate image from http://blockdiag.com/en/nwdiag/demo.html#diagram-outputs
+
 nwdiag {
   node_width = 96;
   internet [label = "Internet", shape = cloud];
