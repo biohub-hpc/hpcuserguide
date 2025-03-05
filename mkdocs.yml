@@ -37,6 +37,7 @@ nav:
     - Operating System: computing_environment/operatingsystem.md
     - Storage:
       - computing_environment/storage/overview.md
+      - Lustre: computing_environment/storage/lustre.md
       - Data Transfer: computing_environment/storage/data_transfer.md
       - Use Cases: computing_environment/storage/usecases.md
   - Getting Started:
