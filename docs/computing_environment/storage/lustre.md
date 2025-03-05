@@ -23,7 +23,7 @@ and high I/O throughput (hundreds of GB/s).
 
 ### Accessing Lustre
  
-Lustre file systems is typically mounted at `/hpc/projects`, `/hpc/instruments`, `/hpc/references`, `/hpc/scratch` that is used as project space for users to store their data. The project space 
+Lustre file systems is typically mounted at `/hpc/projects`, `/hpc/instruments`, `/hpc/reference`, `/hpc/scratch` that is used as project space for users to store their data. The project space 
 is shared among all users in a group and is accessible from all compute nodes in the cluster.
 
 
