@@ -43,6 +43,7 @@ nav:
   - Getting Started:
     - Connecting with SSH: getting_started/connecting_with_ssh.md
     - Connecting with OnDemand: getting_started/connecting_with_ondemand.md
+    - Data Management: getting_started/data_management.md
   - Slurm:
       - working_with_slurm/introduction_to_slurm.md
       - Slurm Job Submission: working_with_slurm/job_submission.md
