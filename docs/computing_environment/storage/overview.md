@@ -158,8 +158,6 @@ For instance if you want to view quota for $MYDATA you can run `quota -s -f $MYD
 
 ```console
 [shahzeb.siddiqui@login-01 ~]$ quota -s -f $MYDATA
-quota: Cannot resolve mountpoint path /hpc/scratch/loupe-1: Stale file handle
-quota: Cannot resolve mountpoint path /hpc/scratch/loupe-2: Stale file handle
 Disk quotas for user shahzeb.siddiqui (uid 5839):
      Filesystem   space   quota   limit   grace   files   quota   limit   grace
 vast-sf.mammoth.infiniband:/mydata/shahzeb.siddiqui
