@@ -286,3 +286,50 @@ To kill a process you simply run
 ```console
 kill <PID>
 ```
+
+## Batch Scheduler
+
+We currently, use [SLURM](https://slurm.schedmd.com/documentation.html) it's a batch scheduler that allows you to submit jobs to the 
+compute cluster. You can view the status of the cluster by running `sinfo` command which shows list of partitions and the avaiable nodes 
+in each partition.
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ sinfo
+PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
+cpu*           up 180-00:00:      2  down* cpu-f-[1-2]
+cpu*           up 180-00:00:      1   drng cpu-a-2
+cpu*           up 180-00:00:      8    mix cpu-b-[1-6],cpu-g-[1-2]
+cpu*           up 180-00:00:      2   idle cpu-a-1,cpu-e-1
+gpu            up 180-00:00:      1  drain gpu-f-1
+gpu            up 180-00:00:     25    mix gpu-a-[1-2,4],gpu-b-[1-6],gpu-c-1,gpu-d-1,gpu-f-[2-6],gpu-g-[1-2],gpu-h-[1-6,8]
+gpu            up 180-00:00:      2   idle gpu-a-3,gpu-d-2
+interactive    up 180-00:00:      4  drng@ gpu-e-2,gpu-sm01-[02,08],gpu-sm02-20
+interactive    up 180-00:00:      2   drng gpu-e-8,gpu-sm01-10
+interactive    up 180-00:00:      1  drain gpu-sm02-06
+interactive    up 180-00:00:     13    mix cpu-c-[2-4],gpu-e-6,gpu-sm01-[01,04-05,09,16],gpu-sm02-[08,12,18-19]
+interactive    up 180-00:00:     20  alloc cpu-c-1,gpu-e-[3-4],gpu-sm01-[03,06-07,11,17-20],gpu-sm02-[01,03-05,07,09-11,13]
+interactive    up 180-00:00:     12   idle gpu-e-[1,5,7],gpu-sm01-[12-15],gpu-sm02-[02,14-17]
+dtn            up 180-00:00:      1  drain login-01
+dtn            up 180-00:00:      1   idle login-02
+preempted      up 2-00:00:00      4  drng@ gpu-e-2,gpu-sm01-[02,08],gpu-sm02-20
+preempted      up 2-00:00:00      2  down* cpu-f-[1-2]
+preempted      up 2-00:00:00      3   drng cpu-a-2,gpu-e-8,gpu-sm01-10
+preempted      up 2-00:00:00      2  drain gpu-f-1,gpu-sm02-06
+preempted      up 2-00:00:00     46    mix cpu-b-[1-6],cpu-c-[2-4],cpu-g-[1-2],gpu-a-[1-2,4],gpu-b-[1-6],gpu-c-1,gpu-d-1,gpu-e-6,gpu-f-[2-6],gpu-g-[1-2],gpu-h-[1-6,8],gpu-sm01-[01,04-05,09,16],gpu-sm02-[08,12,18-19]
+preempted      up 2-00:00:00     20  alloc cpu-c-1,gpu-e-[3-4],gpu-sm01-[03,06-07,11,17-20],gpu-sm02-[01,03-05,07,09-11,13]
+preempted      up 2-00:00:00     16   idle cpu-a-1,cpu-e-1,gpu-a-3,gpu-d-2,gpu-e-[1,5,7],gpu-sm01-[12-15],gpu-sm02-[02,14-17]
+preview        up 180-00:00:      2   idle cpu-vm-[1-2]
+```
+
+
+!!! note
+
+    You can't `ssh` to compute nodes, we have disabled this unless you have a job running.
+
+    ```console
+    [shahzeb.siddiqui@login-01 ~]$ ssh cpu-a-1
+    Access denied by pam_slurm_adopt: you have no active jobs on this node
+    Connection closed by 100.64.2.1 port 22
+    ```
+
+We recommend you review [our slurm documentation](../working_with_slurm/introduction_to_slurm.md) for more details.  
