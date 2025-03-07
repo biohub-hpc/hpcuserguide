@@ -148,3 +148,27 @@ features, like authentication and access control can be made available upon
 request.
 
 
+## Viewing Quota
+
+To view your quota for $HOME directory you can run `df -hT $HOME` which will show you the quota usage. Currently we have set
+a quota of 32GB for $HOME directory
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ df -hT $HOME
+Filesystem                                           Type  Size  Used Avail Use% Mounted on
+storage-home:/nvmepool/exports/home/shahzeb.siddiqui nfs    32G   22G   11G  67% /home/shahzeb.siddiqui
+```
+
+You can use the `quota` command to view quota for VAST, or NFS storage, but if you want to view quota for Lustre filesystem please 
+see [View Lustre Quota](./lustre.md#managing-quotas).
+
+You can view quota for a specific filesystem by running `quota -s -f /path/to/filesystem` which will show the quota for that filesystem.
+For instance if you want to view quota for $MYDATA you can run `quota -s -f $MYDATA`.
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ quota -s -f $MYDATA
+Disk quotas for user shahzeb.siddiqui (uid 5839):
+     Filesystem   space   quota   limit   grace   files   quota   limit   grace
+vast-sf.mammoth.infiniband:/mydata/shahzeb.siddiqui
+                  7203M    885G    932G           48336       0       0
+```
