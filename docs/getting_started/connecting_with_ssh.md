@@ -121,3 +121,65 @@ Activate the web console with: systemctl enable --now cockpit.socket
 Last login: Thu Jan 30 08:59:25 2025 from 100.64.0.34
 ```
 
+!!! warning
+
+    Please do not X11 forwarding with `ssh -X`, we recommend you use [Open OnDemand](https://ondemand.czbiohub.org) for 
+    GUI applications.
+
+## Troubleshooting SSH issues
+
+### **"Issue: Connection Refused" or "Connection Timed Out"**
+
+Please verify the hostname you are trying to connect. A typo in the hostname can cause this error. You can verify the hostname by running 
+`ping <hostname>` or run ssh in verbose mode (`-v`). You may specify additional verbosity with `-vv`, or `-vvv`.
+
+```console
+ssh -vvv <user>@<hostname>
+```
+
+### **"Issue: Permission denied (publickey)"**
+
+Please confirm your private key is correct and loaded. You should have the following files 
+
+- `~/.ssh/id_rsa`: Private Key
+- `~/.ssh/id_rsa.pub`: Public Key
+
+```console
+ssh -i ~/.ssh/id_rsa <user>@<hostname>
+```
+
+Make sure the key permission are restricted to `600` which can be done by running
+
+```console
+chmod 600 ~/.ssh/id_rsa
+```
+
+### **"Issue: Host key verification failed"**
+
+This could be a symptom of the server's host key has changed. To address this problem you will need to remove the old key from your **known_hosts** file.
+The known hosts file is located at `~/.ssh/known_hosts`. You can remove the entry by running the following command
+
+```console
+ssh-keygen -R <hostname>
+```
+
+For instance, if you were trying to connect to `login.bruno.czbiohub.org`, you would run
+
+```console
+ssh-keygen -R login.bruno.czbiohub.org
+```
+
+Once the key is removed, verify you can login to cluster by running
+
+```console
+ssh <user>@login.bruno.czbiohub.org
+```
+
+### General Tips
+
+1. For any ssh related issues, please review the ssh configuration `~/.ssh/config`. If you need to make change consider making a backup of the file before making any changes.
+2. Use ssh verbose mode `ssh -vv` to get more information about the connection.
+3. Make sure you are using the correct public and private key pair when connecting.
+4. Review files `~/.ssh/authorized_keys` and `~/.ssh/known_hosts` for any issues.
+5. Make sure you have a directory `$HOME/.ssh` with permissions `0700`. 
+
