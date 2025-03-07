@@ -1,13 +1,3 @@
----
-title: How do I use NoMachine?
-description: 
-published: true
-date: 2024-06-26T16:00:54.471Z
-tags: 
-editor: markdown
-dateCreated: 2024-06-26T16:00:54.471Z
----
-
 # How do I use NoMachine?
 
 ## NoMachine Client
@@ -28,16 +18,17 @@ Login nodes are open to any connection, but the `gpu-sm[01-02]-[01-20]` nodes
 will require that you have a running job on the node before you are allowed to
 log in to the node desktop.  To claim the node as your own, submit a job like:
 
-```
+```console
 [john.hanks@login01 ~]$ srun --exclusive --partition=gpu --gpus=a40:1 --time=8:00:00 --pty bash -l
 [john.hanks@gpu-sm01-10 ~]$
 ```
+
 You can then attach to the assigned node. For longer sessions, using `sbatch`
 to wrap the `sleep` command will use a batch job which is not subject to the
 job being lost if, for instance, the session with the `srun` were dropped or
 network connection to your laptop lost. That `sbatch` would look like:
 
-```
+```console
 [john.hanks@gpu-sm01-10 ~]$ sbatch --job-name=NOMACHINE --partition=gpu --gpus=a40:1 --time=8:00:00 --exclusive  --wrap "sleep 8h"
 Submitted batch job 40547
 [john.hanks@gpu-sm01-10 ~]$ squeue -j 40547
@@ -58,7 +49,7 @@ examples above, our node is `gpu-sm01-10` so we need to tunnel to that node via
 a cluster login node, to the NX service on port 4000. In a terminal connect
 with
 
-```
+```console
    # Off-site and not on VPN, jump through login-01 or login-02
    $ ssh -J login-01 -L 24000:localhost:4000 YOUR.LOGIN@gpu-sm01-10
 
@@ -85,7 +76,7 @@ collision just pick another port.
 When something that was working, stops working, here are some of the common things to look for:
 
 * Has anything been added to your `${HOME}/.bashrc` or `${HOME}/.bash_profile`?
-* Have you,possibly inadvertently, installed something into `${HOME}/.local` which causes a conflict in binaries or libraries?
+* Have you, possibly inadvertently, installed something into `${HOME}/.local` which causes a conflict in binaries or libraries?
 * Are you hitting a quota or full disk issue? 
 * Has your input data or parameters changed? Now using a larger data set, for instance.
 * Have you tested from an incognito browser window and/or flushed the browser cache?
@@ -110,7 +101,7 @@ It is, however, convenient to be able to access locations through the `${HOME}`
 path. By using symlinks, you can create your own personal namespace in `${HOME}`.
 For example:
 
-```
+```console
 [john.hanks@cluster ~]$ mkdir mydata
 [john.hanks@cluster ~]$ cd mydata
 [john.hanks@cluster mydata]$ ln -s /path/to/something ./something

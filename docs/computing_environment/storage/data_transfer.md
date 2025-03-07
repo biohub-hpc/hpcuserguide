@@ -1,13 +1,3 @@
----
-title: Data Transfer 
-description: Data transfer procedures, and tools for the Bruno HPC System
-published: true
-date: 2024-06-27T16:00:54.471Z
-tags: 
-editor: markdown
-dateCreated: 2024-06-27T16:00:54.471Z
----
-
 # Data Transfer
 
 Transferring data to a High-Performance Computing (HPC) system involves several steps to ensure that your data is securely and efficiently moved to the computing environment where you can perform complex computations. 
@@ -40,26 +30,6 @@ A variety of graphical SFTP clients are available for different OSes:
 | [Fetch](https://fetchsoftworks.com/)     | Mac     |
 | [CyberDuck](https://cyberduck.io)     | Mac     |
 | [muCommander](https://www.mucommander.com/)     | Cross-Platform     |
-
-
-#### Rsync 
-
-```bash
-rsync -avz /path/to/local/file username@hpc-system-address:/path/to/remote/directory
-```
-
-For directories, you can use the same command format.
-
-
-
-|  |  |
-| -------- | -------- |
-| Hostname | login.bruno.czbiohub.org |
-| Port | 22 |
-| Username | firstname.lastname |
-| Password | your okta password |
-
-
 
 1. Understanding File Transfer Protocols
 
@@ -96,13 +66,3 @@ For directories, you can use the same command format.
         put /path/to/local/file /path/to/remote/directory
     ```
 
-
-5. Verifying Transfer
-    Check File Integrity: After transfer, log in to the HPC system and verify that the files have been transferred correctly by checking file sizes and contents.
-
-6. Automating Transfers
-
-    Batch Scripts: Create scripts to automate repetitive transfer tasks using shell scripting. This can be particularly useful for regular data uploads.
-    Cron Jobs: Schedule regular file transfers using cron jobs (Unix/Linux) to automate the process.
-
-By following these steps, you can efficiently and securely transfer your data to an HPC system, allowing you to leverage powerful computing resources for your computational tasks.

@@ -36,7 +36,7 @@ Additionally, it's possible to do simple and non-intensive work directly on the
 login nodes without the need for involving the scheduling layer until ready to
 scale a task up or out across the resources. At the other end of the spectrum
 it's possible to use workflow tools to architect complex pipelines and
-processes, all in the same shared, multi-user environment. .
+processes, all in the same shared, multi-user environment. 
 
 
 
