@@ -13,7 +13,7 @@ markdown_extensions:
 site_name: "CZBioHub HPC User Guide"
 site_url: "https://hpc.czbiohub.org/hpc-user-guide"
 site_description: "CZBioHub HPC User Guide"
-repo_url: https://github.com/czbiohub-sf/hpcuserguide
+repo_url: https://github.com/biohub-hpc/hpcuserguide
 site_author: "@griznog,@rc"
 dev_addr: "127.0.0.1:18080"
 theme:
