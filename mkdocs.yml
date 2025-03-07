@@ -63,6 +63,7 @@ nav:
   - Software:
       - software/overview.md
       - Software List: software/software_modules.md
+      - Conda: software/conda.md
       - Python: software/python.md
       - Container: software/container.md
       - Self Managed Software: software/self_manage_software.md
