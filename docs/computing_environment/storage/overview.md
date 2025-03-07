@@ -150,6 +150,15 @@ request.
 
 ## Viewing Quota
 
+To view your quota for $HOME directory you can run `df -hT $HOME` which will show you the quota usage. Currently we have set
+a quota of 32GB for $HOME directory
+
+```console
+[shahzeb.siddiqui@login-01 ~]$ df -hT $HOME
+Filesystem                                           Type  Size  Used Avail Use% Mounted on
+storage-home:/nvmepool/exports/home/shahzeb.siddiqui nfs    32G   22G   11G  67% /home/shahzeb.siddiqui
+```
+
 You can use the `quota` command to view quota for VAST, or NFS storage, but if you want to view quota for Lustre filesystem please 
 see [View Lustre Quota](./lustre.md#managing-quotas).
 
