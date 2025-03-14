@@ -45,6 +45,7 @@ nav:
     - Connecting with OnDemand: getting_started/connecting_with_ondemand.md
     - Data Management: getting_started/data_management.md
     - Navigating Cluster: getting_started/navigating_cluster.md
+    - File Permissions: getting_started/file_permissions.md
   - Slurm:
       - working_with_slurm/introduction_to_slurm.md
       - Slurm Job Submission: working_with_slurm/job_submission.md
