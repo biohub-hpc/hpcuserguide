@@ -25,17 +25,23 @@ CZBiohub HPC computational resources use Slurm as the job scheduler. From the
 > job) on the set of allocated nodes. Finally, it arbitrates contention for
 > resources by managing a queue of pending work.
 
-All site cluster resources are managed by a Slurm instance with four main open
-partitions:
+## Slurm Partitions
 
-| Partition | Description |
-| --------------- | ------------------------------------------------------- |
-| `interactive` | Provides quick access to workstation nodes. |
-| `cpu` (default) | Nodes that provide CPU-only processing. |
-| `gpu` | Nodes which contain GPU co-processers. |
-| `preempted` | Scavenger partition allows use of all resources |\
-|             | and is preempted by jobs from other partitions. |
-[ Standard partitions ]
+All site cluster resources are managed by a Slurm instance with the following partitions:
+
+| Partition      | QoS           | Settings                                      | Timelimit | Total Nodes | Nodes                                                                                                                                                                                             | Description |
+|--------------|--------------|-----------------------------------------------|-----------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| `interactive` | `interactive` | `DefMemPerCPU=1500`                           | 180 days  | 52          | gpu-a-[1-4],<br>gpu-b-[1-6],<br>gpu-c-1,<br>gpu-d-[1-2],<br>gpu-f-[1-6],<br>gpu-g-[1-2],<br>gpu-h-[1-6,8]                                                                                          | Provides quick access to workstation nodes. |
+| `cpu` (default) | N/A          | `DefMemPerCPU=8000`                           | 180 days  | 13          | cpu-a-[1-2],<br>cpu-b-[1-6],<br>cpu-e-1,<br>cpu-f-[1-2],<br>cpu-g-[1-2]                                                                                                                            | Nodes that provide CPU-only processing. |
+| `gpu`        | N/A          | `DefMemPerCPU=8000`                           | 180 days  | 28          | gpu-a-[1-4],<br>gpu-b-[1-6],<br>gpu-c-1,<br>gpu-d-[1-2],<br>gpu-f-[1-6],<br>gpu-g-[1-2],<br>gpu-h-[1-6,8]                                                                                          | Nodes which contain GPU co-processors. |
+| `preempted`  | N/A          | N/A                                           | 2 days    | 92          | cpu-a-[1-2],<br>cpu-b-[1-6],<br>cpu-c-[1-4],<br>cpu-e-1,<br>cpu-f-[1-2],<br>cpu-g-[1-2],<br>gpu-a-[1-4],<br>gpu-b-[1-6],<br>gpu-c-1,<br>gpu-d-[1-2],<br>gpu-e-[1-8],<br>gpu-f-[1-6],<br>gpu-g-[1-2],<br>gpu-h-[1-6,8],<br>gpu-sm01-[01-20],<br>gpu-sm02-[01-20] | Scavenger partition allows use of all resources and is preempted by jobs from other partitions. |
+| `dtn`        | `dtn`        | `DefMemPerCPU=4000`,<br>`MaxCPUsPerNode=32` | 180 days  | 2           | login-[01-02]                                                                                                                                                                                     | Data Transfer Node partition for data transfer and staging. |
+
+| QoS | Details                                                                              |
+|-----|--------------------------------------------------------------------------------------|
+| `interactive` | `MaxJobsPU=8`, `MaxTRESPU: cpu=32`.  |
+| `dtn` | `MaxTRESPU: cpu=32`  |
+
 
 Additional partitions may be present on some resources where necessary to
 support specific workloads. Resources are selected by using a combination of
