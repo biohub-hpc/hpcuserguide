@@ -56,6 +56,7 @@ nav:
       - Advanced Job Scripting: working_with_slurm/advanced_job_scripting.md
       - Job Monitoring: working_with_slurm/monitoring.md
       - Troubleshooting Slurm: working_with_slurm/troubleshooting.md
+      - Understanding Job Priority: working_with_slurm/job_priority.md
       - Slurm REST API: working_with_slurm/restapi.md
   - User Environment:
       - Shell: environment/shell_startup.md
