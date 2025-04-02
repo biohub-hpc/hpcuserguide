@@ -20,11 +20,12 @@ Knowing your job’s priority helps you understand its place in this dynamic que
 
 Slurm calculates priority using a weighted formula, combining elements like:
 
-**Age**: How long your job has been pending.
-**Fair-share**: Your usage compared to others (to ensure equitable resource access).
-**Partition**: The priority tier of the partition you submit to (e.g., `interactive` vs. `cpu`).
-**Job Size**: The resources your job requests (e.g., number of nodes or CPUs).
-**QoS**: Quality of Service settings, if applied.
+- **Age**: How long your job has been pending.
+- **Fair-share**: Your usage compared to others (to ensure equitable resource access).
+- **Partition**: The priority tier of the partition you submit to (e.g., `interactive` vs. `cpu`).
+- **Job Size**: The resources your job requests (e.g., number of nodes or CPUs).
+- **QoS**: Quality of Service settings, if applied.
+
 You can check your job’s priority with tools likes `sprio` and `squeue`, as shown later in this guide. 
 The system administrator configures these weights and partition priorities in 
 `/etc/slurm/slurm.conf`, so they may differ across clusters.
