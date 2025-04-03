@@ -12,18 +12,10 @@ forum will become a hub where people using the HPC enviornment can exchange
 ideas and suggestions, request enhancements, discuss changes and share
 computational success stories.
 
-### Primary Sysadmin: `@griznog`
-
-You can reach out to the sysadmin by:
-
- * Slack direct message to `@griznog` 
- * email to [john.hanks@czbiohub.org](mailto:john.hanks@czbiohub.org). 
-
 #### HPC Team
 
 | Name              | Role                    | Slack               | Email                                                               |
 |-------------------|-------------------------|---------------------|---------------------------------------------------------------------|
-| John Hanks        | Principal HPC Engineer  | `@griznog`          | [john.hanks@czbiohub.org](mailto:john.hanks@czbiohub.org)           |
 | William Law       | Principal HPC Engineer  | `@William Law`      | [william.law@czbiohub.org](mailto:william.law@czbiohub.org)         |
 | Nathan Hammond    | Bioinformatics Engineer | `@nathan.hammond`   | [nathan.hammond@czbiohub.org](mailto:nathan.hammond@czbiohub.org)   |
 | Virender Kumar    | Principal HPC Engineer  | `@Virender Kumar`   | [virender.kumar@czbiohub.org](mailto:virender.kumar@czbiohub.org)   | 
